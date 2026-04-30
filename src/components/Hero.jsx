@@ -64,6 +64,12 @@ const skillCategories = [
   },
 ]
 
+const stats = [
+  { num: '10+', label: 'Projects Built', color: '#3B82F6', bg: 'rgba(59,130,246,0.08)', border: 'rgba(59,130,246,0.2)' },
+  { num: '5+', label: 'Tech Stacks', color: '#8B5CF6', bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.2)' },
+  { num: 'BTech CSE', label: 'Graduate 2024', color: '#10B981', bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.2)' },
+]
+
 const Hero = () => {
   const [activeTab, setActiveTab] = useState(0)
   const active = skillCategories[activeTab]
@@ -90,7 +96,7 @@ const Hero = () => {
             I build machine learning models and data dashboards to analyze complex datasets and turn them into actionable insights that drive smarter decisions and measurable business outcomes.
           </p>
 
-          <p style={{ color: '#9CA3AF', fontSize: '13px', lineHeight: '1.6', maxWidth: '420px', marginBottom: '32px', fontWeight: '300', fontStyle: 'italic' }}>
+          <p style={{ color: '#E5E7EB', fontSize: '13px', lineHeight: '1.6', maxWidth: '420px', marginBottom: '32px', fontWeight: '300' }}>
             Focused on building models and dashboards that deliver clear, data-driven insights for decision-making.
           </p>
 
@@ -103,17 +109,22 @@ const Hero = () => {
             </a>
           </div>
 
-          <div style={{ display: 'flex', gap: '32px', marginTop: '48px', paddingTop: '32px', borderTop: '0.5px solid rgba(255,255,255,0.06)' }}>
-            {[
-              { num: '   10+', label: 'Projects Built' },
-              { num: '   5+', label: 'Tools & Stacks' },
-              { num: 'B.Tech CSE', label: 'Graduate 2024' },
-            ].map(stat => (
-              <div key={stat.label}>
-                <div style={{ fontFamily: 'Outfit, sans-serif', fontSize: '22px', fontWeight: '800', color: '#F9FAFB', letterSpacing: '-0.5px' }}>
+          {/* Stats as glass morphs */}
+          <div style={{ display: 'flex', gap: '10px', marginTop: '40px', flexWrap: 'wrap' }}>
+            {stats.map(stat => (
+              <div key={stat.label} style={{
+                background: stat.bg,
+                border: `0.5px solid ${stat.border}`,
+                borderRadius: '12px',
+                padding: '12px 18px',
+                backdropFilter: 'blur(8px)',
+                WebkitBackdropFilter: 'blur(8px)',
+                display: 'flex', flexDirection: 'column', gap: '2px',
+              }}>
+                <div style={{ fontFamily: 'Outfit, sans-serif', fontSize: '18px', fontWeight: '700', color: stat.color, letterSpacing: '-0.5px', lineHeight: '1' }}>
                   {stat.num}
                 </div>
-                <div style={{ fontSize: '11px', color: '#6B7280', marginTop: '2px', fontWeight: '300' }}>
+                <div style={{ fontSize: '11px', color: '#6B7280', fontWeight: '300' }}>
                   {stat.label}
                 </div>
               </div>
@@ -159,11 +170,7 @@ const Hero = () => {
                   onMouseEnter={e => e.currentTarget.style.borderColor = active.border}
                   onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'}
                 >
-                  <img
-                    src={skill.logo}
-                    alt={skill.name}
-                    width="28"
-                    height="28"
+                  <img src={skill.logo} alt={skill.name} width="28" height="28"
                     style={{ objectFit: 'contain', flexShrink: 0 }}
                     onError={e => { e.target.style.display = 'none' }}
                   />
@@ -181,7 +188,6 @@ const Hero = () => {
                 {active.skills.length} tools in {active.label}
               </span>
             </div>
-
           </div>
         </div>
       </div>
