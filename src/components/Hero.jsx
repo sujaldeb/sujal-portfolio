@@ -4,88 +4,82 @@ import { useState } from 'react'
 const skillCategories = [
   {
     label: 'Data',
-    icon: '📊',
     color: '#3B82F6',
     bg: 'rgba(59,130,246,0.12)',
     border: 'rgba(59,130,246,0.25)',
     skills: [
-      { name: 'Pandas', icon: '🐼' },
-      { name: 'NumPy', icon: '🔢' },
-      { name: 'MS Excel', icon: '📗' },
-      { name: 'ETL', icon: '🔄' },
+      { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+      { name: 'Pandas', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg' },
+      { name: 'NumPy', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg' },
+      { name: 'MS Excel', logo: 'https://img.icons8.com/color/48/microsoft-excel-2019--v1.png' },
     ]
   },
   {
     label: 'ML',
-    icon: '🤖',
     color: '#8B5CF6',
     bg: 'rgba(139,92,246,0.12)',
     border: 'rgba(139,92,246,0.25)',
     skills: [
-      { name: 'Scikit-learn', icon: '⚙️' },
-      { name: 'TensorFlow', icon: '🧠' },
-      { name: 'XGBoost', icon: '🚀' },
-      { name: 'NLP', icon: '💬' },
+      { name: 'Scikit-learn', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg' },
+      { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
+      { name: 'Keras', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/ae/Keras_logo.svg' },
+      { name: 'OpenCV', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
     ]
   },
   {
     label: 'Viz',
-    icon: '📈',
     color: '#06B6D4',
     bg: 'rgba(6,182,212,0.12)',
     border: 'rgba(6,182,212,0.25)',
     skills: [
-      { name: 'Power BI', icon: '📊' },
-      { name: 'Tableau', icon: '📉' },
-      { name: 'Matplotlib', icon: '🎨' },
-      { name: 'Seaborn', icon: '🌊' },
+      { name: 'Power BI', logo: 'https://img.icons8.com/color/48/power-bi.png' },
+      { name: 'Tableau', logo: 'https://img.icons8.com/color/48/tableau-software.png' },
+      { name: 'Matplotlib', logo: 'https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg' },
+      { name: 'Seaborn', logo: 'https://seaborn.pydata.org/_images/logo-mark-lightbg.svg' },
     ]
   },
   {
     label: 'DB',
-    icon: '🗄️',
     color: '#10B981',
     bg: 'rgba(16,185,129,0.12)',
     border: 'rgba(16,185,129,0.25)',
     skills: [
-      { name: 'SQL', icon: '🔍' },
-      { name: 'PostgreSQL', icon: '🐘' },
-      { name: 'MySQL', icon: '🐬' },
-      { name: 'SQLite', icon: '💾' },
+      { name: 'MySQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+      { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+      { name: 'SQL Server', logo: 'https://img.icons8.com/color/48/microsoft-sql-server.png' },
+      { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
     ]
   },
   {
     label: 'Deploy',
-    icon: '🚀',
     color: '#F59E0B',
     bg: 'rgba(245,158,11,0.12)',
     border: 'rgba(245,158,11,0.25)',
     skills: [
-      { name: 'Streamlit', icon: '⚡' },
-      { name: 'Flask', icon: '🌶️' },
-      { name: 'GitHub', icon: '🐙' },
-      { name: 'Vercel', icon: '▲' },
+      { name: 'Streamlit', logo: 'https://streamlit.io/images/brand/streamlit-mark-color.svg' },
+      { name: 'GitHub', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
+      { name: 'Vercel', logo: 'https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png' },
+      { name: 'VS Code', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
     ]
   },
 ]
 
 const Hero = () => {
   const [activeTab, setActiveTab] = useState(0)
+  const active = skillCategories[activeTab]
 
   return (
     <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '70px 20px 60px' }}>
-
-      {/* Top Hero Grid */}
       <div className="hero-grid">
 
-        {/* Left Side */}
+        {/* Left */}
         <div>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(59,130,246,0.12)', border: '0.5px solid rgba(59,130,246,0.3)', color: '#93C5FD', padding: '5px 14px', borderRadius: '100px', fontSize: '12px', marginBottom: '24px' }}>
             <span style={{ width: '6px', height: '6px', background: '#3B82F6', borderRadius: '50%' }} />
             Open to opportunities
           </div>
 
-          <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: '800', lineHeight: '1.08', letterSpacing: '-1.5px', color: '#F9FAFB', marginBottom: '16px' }} className="hero-h1">
+          <h1 className="hero-h1" style={{ fontFamily: 'Outfit, sans-serif', fontWeight: '800', lineHeight: '1.08', letterSpacing: '-1.5px', color: '#F9FAFB', marginBottom: '16px' }}>
             Data Analyst<br />
             <span style={{ background: 'linear-gradient(135deg, #3B82F6, #60A5FA)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
               & ML Engineer
@@ -100,11 +94,11 @@ const Hero = () => {
             Focused on building models and dashboards that deliver clear, data-driven insights for decision-making.
           </p>
 
-          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             <Link to="/projects" style={{ background: '#3B82F6', color: '#fff', padding: '12px 24px', borderRadius: '8px', fontSize: '14px', fontWeight: '500', textDecoration: 'none' }}>
               View Projects →
             </Link>
-            <a href="mailto:sujaldeb1@gmail.com" style={{ background: 'transparent', color: '#9CA3AF', padding: '12px 24px', borderRadius: '8px', fontSize: '14px', fontWeight: '400', textDecoration: 'none', border: '0.5px solid rgba(255,255,255,0.15)' }}>
+            <a href="mailto:sujaldeb1@gmail.com" style={{ background: 'transparent', color: '#9CA3AF', padding: '12px 24px', borderRadius: '8px', fontSize: '14px', textDecoration: 'none', border: '0.5px solid rgba(255,255,255,0.15)' }}>
               Let's Talk
             </a>
           </div>
@@ -127,58 +121,64 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Side - Skills Card */}
+        {/* Right - Skills Card */}
         <div className="hero-skills-wrap">
-          <div style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '20px', padding: '24px', width: '100%' }}>
+          <div style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '20px', padding: '28px', width: '100%' }}>
 
-            {/* Card Header */}
-            <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#6B7280', textTransform: 'uppercase', fontWeight: '500', marginBottom: '16px' }}>
+            <div style={{ fontSize: '10px', letterSpacing: '2px', color: '#4B5563', textTransform: 'uppercase', fontWeight: '500', marginBottom: '16px' }}>
               Tech Stack
             </div>
 
-            {/* Tab Buttons */}
-            <div style={{ display: 'flex', gap: '6px', marginBottom: '20px', flexWrap: 'wrap' }}>
+            {/* Tabs */}
+            <div style={{ display: 'flex', gap: '6px', marginBottom: '24px', flexWrap: 'wrap' }}>
               {skillCategories.map((cat, i) => (
-                <button
-                  key={cat.label}
-                  onClick={() => setActiveTab(i)}
-                  style={{
-                    display: 'flex', alignItems: 'center', gap: '5px',
-                    padding: '6px 12px', borderRadius: '8px', fontSize: '12px',
-                    fontWeight: activeTab === i ? '600' : '400',
-                    border: activeTab === i ? `0.5px solid ${cat.border}` : '0.5px solid rgba(255,255,255,0.06)',
-                    background: activeTab === i ? cat.bg : 'transparent',
-                    color: activeTab === i ? cat.color : '#6B7280',
-                    cursor: 'pointer', fontFamily: 'Plus Jakarta Sans, sans-serif',
-                    transition: 'all 0.2s',
-                  }}
-                >
-                  <span>{cat.icon}</span>
+                <button key={cat.label} onClick={() => setActiveTab(i)} style={{
+                  padding: '6px 16px', borderRadius: '100px', fontSize: '12px',
+                  fontWeight: activeTab === i ? '600' : '400',
+                  border: activeTab === i ? `0.5px solid ${cat.border}` : '0.5px solid rgba(255,255,255,0.07)',
+                  background: activeTab === i ? cat.bg : 'transparent',
+                  color: activeTab === i ? cat.color : '#6B7280',
+                  cursor: 'pointer', fontFamily: 'Plus Jakarta Sans, sans-serif',
+                  transition: 'all 0.2s',
+                }}>
                   {cat.label}
                 </button>
               ))}
             </div>
 
-            {/* Active Skills */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-              {skillCategories[activeTab].skills.map(skill => (
+            {/* Skill Cards */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+              {active.skills.map(skill => (
                 <div key={skill.name} style={{
                   background: 'rgba(255,255,255,0.04)',
-                  border: `0.5px solid ${skillCategories[activeTab].border}`,
-                  borderRadius: '10px', padding: '12px 14px',
-                  display: 'flex', alignItems: 'center', gap: '10px',
-                }}>
-                  <span style={{ fontSize: '18px' }}>{skill.icon}</span>
-                  <span style={{ fontSize: '13px', color: '#C9D1D9', fontWeight: '400' }}>{skill.name}</span>
+                  border: '0.5px solid rgba(255,255,255,0.07)',
+                  borderRadius: '12px', padding: '18px 16px',
+                  display: 'flex', alignItems: 'center', gap: '12px',
+                  transition: 'border-color 0.2s',
+                }}
+                  onMouseEnter={e => e.currentTarget.style.borderColor = active.border}
+                  onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'}
+                >
+                  <img
+                    src={skill.logo}
+                    alt={skill.name}
+                    width="28"
+                    height="28"
+                    style={{ objectFit: 'contain', flexShrink: 0 }}
+                    onError={e => { e.target.style.display = 'none' }}
+                  />
+                  <span style={{ fontSize: '13px', color: '#C9D1D9', fontWeight: '400' }}>
+                    {skill.name}
+                  </span>
                 </div>
               ))}
             </div>
 
-            {/* Bottom Tag */}
-            <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '0.5px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: skillCategories[activeTab].color }} />
+            {/* Footer */}
+            <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '0.5px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: active.color }} />
               <span style={{ fontSize: '11px', color: '#4B5563', fontWeight: '300' }}>
-                {skillCategories[activeTab].skills.length} tools in {skillCategories[activeTab].label}
+                {active.skills.length} tools in {active.label}
               </span>
             </div>
 
@@ -187,12 +187,7 @@ const Hero = () => {
       </div>
 
       <style>{`
-        .hero-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 48px;
-          align-items: center;
-        }
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
         .hero-h1 { font-size: 48px; }
         .hero-skills-wrap { display: flex; justify-content: flex-end; width: 100%; }
         @media (max-width: 768px) {
