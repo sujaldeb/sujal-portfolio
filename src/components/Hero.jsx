@@ -98,7 +98,8 @@ const Hero = () => {
             I turn messy data into intelligent systems and dashboards that drive real business decisions.
           </p>
           <p style={{ color: '#E5E7EB', fontSize: '13.5px', lineHeight: '1.7', maxWidth: '440px', marginBottom: '32px', fontWeight: '300' }}>
-            From high-accuracy ML models to automated analytics workflows — I focus on results you can measure.
+            From high-accuracy ML models to automated analytics workflows —{' '}
+            <br />I focus on results you can measure.
           </p>
 
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
@@ -113,25 +114,30 @@ const Hero = () => {
           {/* Impact Cards */}
           <div className="impact-strip">
             {impactCards.map((card, i) => (
-              <Link key={i} to={`/projects/${card.projectId}`} style={{ textDecoration: 'none' }}>
+              <Link key={i} to={`/projects/${card.projectId}`} style={{ textDecoration: 'none', flex: 1 }}>
                 <div style={{
                   background: card.bg,
                   border: `0.5px solid ${card.border}`,
                   borderRadius: '12px',
-                  padding: '12px 14px',
+                  padding: '16px 10px',
                   backdropFilter: 'blur(8px)',
                   WebkitBackdropFilter: 'blur(8px)',
                   cursor: 'pointer',
                   transition: 'transform 0.2s, border-color 0.2s',
-                  whiteSpace: 'nowrap',
+                  textAlign: 'center',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '6px',
                 }}
                   onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.borderColor = card.color + '60' }}
                   onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = card.border }}
                 >
-                  <div style={{ fontFamily: 'Outfit, sans-serif', fontSize: '17px', fontWeight: '700', color: card.color, letterSpacing: '-0.5px', lineHeight: '1', marginBottom: '4px' }}>
+                  <div style={{ fontFamily: 'Outfit, sans-serif', fontSize: '20px', fontWeight: '700', color: card.color, letterSpacing: '-0.5px', lineHeight: '1' }}>
                     {card.metric}
                   </div>
-                  <div style={{ fontSize: '10px', color: '#6B7280', fontWeight: '300', whiteSpace: 'normal', lineHeight: '1.4', maxWidth: '100px' }}>
+                  <div style={{ fontSize: '10px', color: '#6B7280', fontWeight: '300', lineHeight: '1.4', textAlign: 'center' }}>
                     {card.desc}
                   </div>
                 </div>
@@ -213,14 +219,10 @@ const Hero = () => {
           display: flex;
           gap: 8px;
           margin-top: 28px;
-          flex-wrap: wrap;
+          width: 100%;
         }
         .impact-strip > a {
           flex: 1;
-          min-width: 90px;
-        }
-        .impact-strip > a > div {
-          height: 100%;
         }
         @media (max-width: 768px) {
           .hero-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -229,7 +231,8 @@ const Hero = () => {
           .hero-left p { text-align: center; }
           .hero-left > div:first-child { align-self: center; }
           .hero-skills-wrap { justify-content: center; }
-          .impact-strip { justify-content: center; }
+          .impact-strip { flex-wrap: wrap; justify-content: center; }
+          .impact-strip > a { flex: 0 0 calc(50% - 4px); }
         }
       `}</style>
     </section>
