@@ -90,7 +90,7 @@ const Hero = () => {
             I build machine learning models and data dashboards to analyze complex datasets and turn them into actionable insights that drive smarter decisions and measurable business outcomes.
           </p>
 
-          <p style={{ color: '#6B7280', fontSize: '13px', lineHeight: '1.6', maxWidth: '420px', marginBottom: '32px', fontWeight: '300', fontStyle: 'italic' }}>
+          <p style={{ color: '#9CA3AF', fontSize: '13px', lineHeight: '1.6', maxWidth: '420px', marginBottom: '32px', fontWeight: '300', fontStyle: 'italic' }}>
             Focused on building models and dashboards that deliver clear, data-driven insights for decision-making.
           </p>
 
@@ -105,9 +105,9 @@ const Hero = () => {
 
           <div style={{ display: 'flex', gap: '32px', marginTop: '48px', paddingTop: '32px', borderTop: '0.5px solid rgba(255,255,255,0.06)' }}>
             {[
-              { num: '10+', label: 'Projects Built' },
-              { num: '5+', label: 'Tools & Stacks' },
-              { num: 'BTech CSE', label: 'Graduate 2024' },
+              { num: '   10+', label: 'Projects Built' },
+              { num: '   5+', label: 'Tools & Stacks' },
+              { num: 'B.Tech CSE', label: 'Graduate 2024' },
             ].map(stat => (
               <div key={stat.label}>
                 <div style={{ fontFamily: 'Outfit, sans-serif', fontSize: '22px', fontWeight: '800', color: '#F9FAFB', letterSpacing: '-0.5px' }}>
