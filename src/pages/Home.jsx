@@ -10,18 +10,15 @@ const Home = () => {
 
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh', position: 'relative' }}>
-
-      {/* Ambient glow blobs */}
       <div className="glow-bg" />
       <div className="glow-bottom" />
-
       <div style={{ position: 'relative', zIndex: 1 }}>
         <Navbar />
         <Hero />
 
-        {/* Featured Projects Section */}
-        <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '80px 32px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '48px' }}>
+        {/* Featured Projects */}
+        <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '80px 20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '48px', flexWrap: 'wrap', gap: '16px' }}>
             <div>
               <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '8px' }}>
                 Selected Work
@@ -34,7 +31,7 @@ const Home = () => {
               View all 10 projects →
             </Link>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+          <div className="projects-grid">
             {featured.map(project => (
               <ProjectCard key={project.id} project={project} />
             ))}
@@ -42,8 +39,8 @@ const Home = () => {
         </section>
 
         {/* About Section */}
-        <section style={{ borderTop: '0.5px solid rgba(255,255,255,0.06)', padding: '80px 32px' }}>
-          <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '64px', alignItems: 'center' }}>
+        <section style={{ borderTop: '0.5px solid rgba(255,255,255,0.06)', padding: '80px 20px' }}>
+          <div style={{ maxWidth: '1100px', margin: '0 auto' }} className="about-grid">
             <div>
               <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '8px' }}>
                 Background
@@ -52,7 +49,7 @@ const Home = () => {
                 About Me
               </h2>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '28px' }}>
-                <div style={{ width: '64px', height: '64px', background: 'linear-gradient(135deg, #1D4ED8, #3B82F6)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontSize: '20px', fontWeight: '800', color: '#fff' }}>
+                <div style={{ width: '64px', height: '64px', background: 'linear-gradient(135deg, #1D4ED8, #3B82F6)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontSize: '20px', fontWeight: '800', color: '#fff', flexShrink: 0 }}>
                   SD
                 </div>
                 <div>
@@ -73,7 +70,7 @@ const Home = () => {
               <p style={{ color: '#9CA3AF', fontSize: '15px', lineHeight: '1.8', marginBottom: '32px', fontWeight: '300' }}>
                 I work across the full data pipeline — from writing complex SQL queries and building ML models to creating dashboards that non-technical stakeholders actually understand and use.
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '8px' }}>
+              <div className="skills-grid">
                 {[
                   { name: 'Python', color: '#3B82F6' },
                   { name: 'Power BI', color: '#8B5CF6' },
@@ -96,15 +93,15 @@ const Home = () => {
         </section>
 
         {/* CTA Section */}
-        <section style={{ padding: '80px 32px', textAlign: 'center' }}>
-          <div style={{ maxWidth: '600px', margin: '0 auto', background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '24px', padding: '60px 40px' }}>
+        <section style={{ padding: '80px 20px', textAlign: 'center' }}>
+          <div style={{ maxWidth: '600px', margin: '0 auto', background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '24px', padding: '60px 32px' }}>
             <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '36px', fontWeight: '700', color: '#F9FAFB', letterSpacing: '-0.8px', marginBottom: '16px' }}>
               Let's work together
             </h2>
             <p style={{ color: '#6B7280', fontSize: '15px', lineHeight: '1.7', marginBottom: '32px', fontWeight: '300' }}>
               I'm currently open to full-time roles and internships in Data Analytics, Data Science, and ML Engineering.
             </p>
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="mailto:sujaldeb1@gmail.com" style={{ background: '#3B82F6', color: '#fff', padding: '13px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '500', textDecoration: 'none' }}>
                 Get in Touch →
               </a>
@@ -115,7 +112,19 @@ const Home = () => {
           </div>
         </section>
 
+        <style>{`
+          .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+          .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: center; }
+          .skills-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+          @media (max-width: 768px) {
+            .projects-grid { grid-template-columns: 1fr; }
+            .about-grid { grid-template-columns: 1fr; gap: 32px; }
+            .skills-grid { grid-template-columns: 1fr 1fr; }
+          }
+        `}</style>
+
         <Footer />
+
       </div>
     </div>
   )
