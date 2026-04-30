@@ -78,6 +78,8 @@ const Hero = () => {
 
   return (
     <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '70px 20px 60px' }}>
+
+      {/* Top Hero Grid */}
       <div className="hero-grid">
 
         {/* Left */}
@@ -98,7 +100,7 @@ const Hero = () => {
             I turn messy data into intelligent systems and dashboards that drive real business decisions.
           </p>
           <p style={{ color: '#E5E7EB', fontSize: '13.5px', lineHeight: '1.7', maxWidth: '440px', marginBottom: '32px', fontWeight: '300' }}>
-            From high-accuracy ML models to automated analytics workflows. I focus on results you can measure.
+            From high-accuracy ML models to automated analytics workflows.<br />I focus on results you can measure.
           </p>
 
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
@@ -109,48 +111,11 @@ const Hero = () => {
               Let's Talk
             </a>
           </div>
-
-          {/* Impact Cards — full width row */}
-          <div className="impact-strip">
-            {impactCards.map((card, i) => (
-              <Link key={i} to={`/projects/${card.projectId}`} style={{ textDecoration: 'none', flex: '1 1 0', minWidth: 0 }}>
-                <div style={{
-                  background: card.bg,
-                  border: `0.5px solid ${card.border}`,
-                  borderRadius: '12px',
-                  padding: '16px 10px',
-                  backdropFilter: 'blur(8px)',
-                  WebkitBackdropFilter: 'blur(8px)',
-                  cursor: 'pointer',
-                  transition: 'transform 0.2s, border-color 0.2s',
-                  textAlign: 'center',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px',
-                  boxSizing: 'border-box',
-                }}
-                  onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.borderColor = card.color + '60' }}
-                  onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = card.border }}
-                >
-                  <div style={{ fontFamily: 'Outfit, sans-serif', fontSize: '20px', fontWeight: '700', color: card.color, letterSpacing: '-0.5px', lineHeight: '1' }}>
-                    {card.metric}
-                  </div>
-                  <div style={{ fontSize: '10.5px', color: '#9CA3AF', fontWeight: '300', lineHeight: '1.5', textAlign: 'center' }}>
-                    {card.desc}
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
         </div>
 
         {/* Right - Skills Card */}
         <div className="hero-skills-wrap">
           <div style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '20px', padding: '24px', width: '100%' }}>
-
             <div style={{ fontSize: '10px', letterSpacing: '2px', color: '#4B5563', textTransform: 'uppercase', fontWeight: '500', marginBottom: '14px' }}>
               Tech Stack
             </div>
@@ -207,6 +172,42 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Impact Cards — OUTSIDE grid, full width */}
+      <div className="impact-strip">
+        {impactCards.map((card, i) => (
+          <Link key={i} to={`/projects/${card.projectId}`} style={{ textDecoration: 'none', flex: '1 1 0', minWidth: 0 }}>
+            <div style={{
+              background: card.bg,
+              border: `0.5px solid ${card.border}`,
+              borderRadius: '12px',
+              padding: '18px 12px',
+              backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)',
+              cursor: 'pointer',
+              transition: 'transform 0.2s, border-color 0.2s',
+              textAlign: 'center',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              boxSizing: 'border-box',
+            }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.borderColor = card.color + '60' }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = card.border }}
+            >
+              <div style={{ fontFamily: 'Outfit, sans-serif', fontSize: '22px', fontWeight: '700', color: card.color, letterSpacing: '-0.5px', lineHeight: '1' }}>
+                {card.metric}
+              </div>
+              <div style={{ fontSize: '11px', color: '#C9D1D9', fontWeight: '300', lineHeight: '1.5', textAlign: 'center' }}>
+                {card.desc}
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+
       <style>{`
         .hero-grid {
           display: grid;
@@ -219,8 +220,8 @@ const Hero = () => {
         .impact-strip {
           display: flex;
           flex-direction: row;
-          gap: 10px;
-          margin-top: 28px;
+          gap: 12px;
+          margin-top: 32px;
           width: 100%;
         }
         .impact-strip > a {
@@ -234,7 +235,7 @@ const Hero = () => {
           .hero-left p { text-align: center; }
           .hero-skills-wrap { justify-content: center; }
           .impact-strip { flex-wrap: wrap; }
-          .impact-strip > a { flex: 0 0 calc(50% - 5px); }
+          .impact-strip > a { flex: 0 0 calc(50% - 6px); }
         }
       `}</style>
     </section>
