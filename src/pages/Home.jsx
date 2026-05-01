@@ -8,6 +8,25 @@ import { Link } from 'react-router-dom'
 const Home = () => {
   const featured = projects.filter(p => p.featured)
 
+  const bullets = [
+    'Build structured pipelines from messy, real-world datasets',
+    'Use statistical and ML techniques to uncover patterns and predict outcomes',
+    'Translate technical findings into dashboards and reports for decision-makers',
+    'Focus on clarity, scalability, and measurable impact',
+  ]
+
+  const competencies = [
+    { name: 'Data Pipelines', color: '#3B82F6' },
+    { name: 'Predictive Modeling', color: '#8B5CF6' },
+    { name: 'Business Analytics', color: '#10B981' },
+    { name: 'Dashboard Design', color: '#06B6D4' },
+    { name: 'Statistical Analysis', color: '#F59E0B' },
+    { name: 'Team Player', color: '#3B82F6' },
+    { name: 'Communication', color: '#8B5CF6' },
+    { name: 'Problem Solving', color: '#10B981' },
+    { name: 'Attention to Detail', color: '#06B6D4' },
+  ]
+
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh', position: 'relative' }}>
       <div className="glow-bg" />
@@ -36,24 +55,17 @@ const Home = () => {
                   onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = item.color + '66' }}
                   onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = item.color + '33' }}
                 >
-                  {/* Grid lines */}
                   <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`, backgroundSize: '20px 20px' }} />
-
-                  {/* Chart bars */}
                   <div style={{ position: 'absolute', bottom: '32px', left: '16px', right: '16px', display: 'flex', alignItems: 'flex-end', gap: '4px', height: '50px' }}>
                     {item.bars.map((h, j) => (
                       <div key={j} style={{ flex: 1, height: `${h}%`, background: item.color + '70', borderRadius: '2px 2px 0 0' }} />
                     ))}
                   </div>
-
-                  {/* Top tag */}
                   <div style={{ position: 'absolute', top: '14px', left: '14px' }}>
                     <span style={{ fontSize: '10px', fontWeight: '600', color: item.color, background: item.color + '25', padding: '3px 8px', borderRadius: '4px', letterSpacing: '0.5px' }}>
                       {item.tag}
                     </span>
                   </div>
-
-                  {/* Bottom title */}
                   <div style={{ position: 'absolute', bottom: '10px', left: '14px', right: '14px' }}>
                     <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)', fontWeight: '400', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {item.title}
@@ -79,63 +91,71 @@ const Home = () => {
             </Link>
           </div>
 
-          {/* Projects Grid */}
           <div className="projects-grid">
             {featured.map(project => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
-
         </section>
 
         {/* About Section */}
         <section style={{ borderTop: '0.5px solid rgba(255,255,255,0.06)', padding: '80px 20px' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto' }} className="about-grid">
 
-            <div>
-              <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '8px' }}>
+            {/* Left */}
+            <div className="about-left">
+              <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '12px' }}>
                 Background
               </div>
               <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '36px', fontWeight: '700', color: '#F9FAFB', letterSpacing: '-0.8px', marginBottom: '24px' }}>
                 About Me
               </h2>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '28px' }}>
+
+              {/* Avatar */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
                 <div style={{ width: '64px', height: '64px', background: 'linear-gradient(135deg, #1D4ED8, #3B82F6)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontSize: '20px', fontWeight: '800', color: '#fff', flexShrink: 0 }}>
                   SD
                 </div>
                 <div>
                   <div style={{ fontWeight: '600', color: '#F3F4F6', fontSize: '16px' }}>Sujal Deb</div>
-                  <div style={{ fontSize: '13px', color: '#6B7280', marginTop: '2px' }}>Data Science Specialist</div>
+                  <div style={{ fontSize: '13px', color: '#9CA3AF', marginTop: '2px' }}>
+                    Data Scientist <span style={{ color: '#4B5563' }}>|</span> Data Analyst
+                  </div>
+                  <div style={{ fontSize: '12px', color: '#6B7280', marginTop: '3px' }}>B.Tech CSE 2024</div>
                 </div>
               </div>
+
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(34,197,94,0.08)', border: '0.5px solid rgba(34,197,94,0.2)', padding: '6px 14px', borderRadius: '100px', fontSize: '12px', color: '#86EFAC' }}>
                 <span style={{ width: '6px', height: '6px', background: '#22C55E', borderRadius: '50%' }} />
                 Available for hire
               </div>
             </div>
 
+            {/* Right */}
             <div>
-              <p style={{ color: '#9CA3AF', fontSize: '15px', lineHeight: '1.8', marginBottom: '20px', fontWeight: '300' }}>
-                I'm a <strong style={{ color: '#E5E7EB', fontWeight: '500' }}>B.Tech CSE graduate (2024)</strong> with a specialization in Data Science. Passionate about turning raw data into insights that drive real business decisions.
+              <p style={{ color: '#C9D1D9', fontSize: '15px', lineHeight: '1.8', marginBottom: '16px', fontWeight: '400' }}>
+                I approach data problems end-to-end — from extracting and cleaning raw data to building models and delivering insights that stakeholders can actually use.
               </p>
-              <p style={{ color: '#9CA3AF', fontSize: '15px', lineHeight: '1.8', marginBottom: '32px', fontWeight: '300' }}>
-                I work across the full data pipeline — from writing complex SQL queries and building ML models to creating dashboards that non-technical stakeholders actually understand and use.
+              <p style={{ color: '#9CA3AF', fontSize: '14px', lineHeight: '1.8', marginBottom: '28px', fontWeight: '300' }}>
+                My work sits at the intersection of analysis, engineering, and business decision-making.
               </p>
-              <div className="skills-grid">
-                {[
-                  { name: 'Python', color: '#3B82F6' },
-                  { name: 'Power BI', color: '#8B5CF6' },
-                  { name: 'SQL', color: '#10B981' },
-                  { name: 'Scikit-learn', color: '#F59E0B' },
-                  { name: 'Pandas', color: '#EF4444' },
-                  { name: 'Tableau', color: '#06B6D4' },
-                  { name: 'Machine Learning', color: '#3B82F6' },
-                  { name: 'Data Analysis', color: '#8B5CF6' },
-                  { name: 'Statistics', color: '#10B981' },
-                ].map(skill => (
-                  <div key={skill.name} style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '8px', padding: '10px 14px', fontSize: '12px', color: '#9CA3AF', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: skill.color, flexShrink: 0 }} />
-                    {skill.name}
+
+              {/* Bullet Points */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px' }}>
+                {bullets.map((b, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                    <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#3B82F6', flexShrink: 0, marginTop: '7px' }} />
+                    <span style={{ color: '#C9D1D9', fontSize: '14px', lineHeight: '1.7', fontWeight: '300' }}>{b}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Competencies */}
+              <div className="competencies-grid">
+                {competencies.map(c => (
+                  <div key={c.name} style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '8px', padding: '9px 14px', fontSize: '12px', color: '#C9D1D9', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: c.color, flexShrink: 0 }} />
+                    {c.name}
                   </div>
                 ))}
               </div>
@@ -167,13 +187,15 @@ const Home = () => {
         <style>{`
           .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
           .preview-strip { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
-          .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: center; }
-          .skills-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+          .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
+          .competencies-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
           @media (max-width: 768px) {
             .projects-grid { grid-template-columns: 1fr; }
             .preview-strip { grid-template-columns: 1fr 1fr; gap: 12px; }
             .about-grid { grid-template-columns: 1fr; gap: 32px; }
-            .skills-grid { grid-template-columns: 1fr 1fr; }
+            .about-left { text-align: center; display: flex; flex-direction: column; align-items: center; }
+            .about-left > div:first-child { align-self: center; }
+            .competencies-grid { grid-template-columns: 1fr 1fr; }
           }
         `}</style>
 
