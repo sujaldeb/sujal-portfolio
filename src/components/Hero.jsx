@@ -65,12 +65,18 @@ const skillCategories = [
 ]
 
 const impactCards = [
-  { metric: '+25%', desc: 'Lead conversion via Sales Analytics Dashboard', color: '#3B82F6', bg: 'rgba(59,130,246,0.08)', border: 'rgba(59,130,246,0.2)', projectId: 'project-2' },
-  { metric: '94%', desc: 'Accuracy in Customer Churn Prediction model', color: '#8B5CF6', bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.2)', projectId: 'project-1' },
-  { metric: '8 hrs', desc: 'Saved weekly via automated Power BI reporting', color: '#10B981', bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.2)', projectId: 'project-2' },
+  { metric: '94%', desc: 'Accuracy in Customer Churn Prediction model', color: '#3B82F6', bg: 'rgba(59,130,246,0.08)', border: 'rgba(59,130,246,0.2)', projectId: 'project-1' },
+  { metric: '8 hrs', desc: 'Saved weekly via automated Power BI reporting', color: '#8B5CF6', bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.2)', projectId: 'project-2' },
+  { metric: '+23%', desc: 'Conversion lift from SQL Funnel Analysis', color: '#10B981', bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.2)', projectId: 'project-3' },
   { metric: '89%', desc: 'F1 Score on Sentiment Analysis NLP model', color: '#F59E0B', bg: 'rgba(245,158,11,0.08)', border: 'rgba(245,158,11,0.2)', projectId: 'project-4' },
-  { metric: '+23%', desc: 'Conversion lift from SQL Funnel Analysis', color: '#06B6D4', bg: 'rgba(6,182,212,0.08)', border: 'rgba(6,182,212,0.2)', projectId: 'project-3' },
 ]
+
+const getSkillGrid = (label, count) => {
+  if (label === 'DB') return '1fr 1fr'
+  if (count === 5) return '1fr 1fr'
+  if (count === 3) return '1fr 1fr 1fr'
+  return '1fr 1fr'
+}
 
 const Hero = () => {
   const [activeTab, setActiveTab] = useState(0)
@@ -100,7 +106,8 @@ const Hero = () => {
             I turn messy data into intelligent systems and dashboards that drive real business decisions.
           </p>
           <p style={{ color: '#E5E7EB', fontSize: '13.5px', lineHeight: '1.7', maxWidth: '440px', marginBottom: '32px', fontWeight: '300' }}>
-            From high-accuracy ML models to automated analytics workflows.<br />I focus on results you can measure.
+            From high-accuracy ML models to automated analytics workflows.<br />
+            I focus on results you can measure.
           </p>
 
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
@@ -115,7 +122,8 @@ const Hero = () => {
 
         {/* Right - Skills Card */}
         <div className="hero-skills-wrap">
-          <div style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '20px', padding: '24px', width: '100%' }}>
+          <div style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '20px', padding: '24px', width: '100%', boxSizing: 'border-box' }}>
+
             <div style={{ fontSize: '10px', letterSpacing: '2px', color: '#4B5563', textTransform: 'uppercase', fontWeight: '500', marginBottom: '14px' }}>
               Tech Stack
             </div>
@@ -124,13 +132,13 @@ const Hero = () => {
             <div style={{ display: 'flex', gap: '5px', marginBottom: '18px', flexWrap: 'wrap' }}>
               {skillCategories.map((cat, i) => (
                 <button key={cat.label} onClick={() => setActiveTab(i)} style={{
-                  padding: '5px 13px', borderRadius: '100px', fontSize: '11px',
+                  padding: '5px 11px', borderRadius: '100px', fontSize: '11px',
                   fontWeight: activeTab === i ? '600' : '400',
                   border: activeTab === i ? `0.5px solid ${cat.border}` : '0.5px solid rgba(255,255,255,0.07)',
                   background: activeTab === i ? cat.bg : 'transparent',
                   color: activeTab === i ? cat.color : '#6B7280',
                   cursor: 'pointer', fontFamily: 'Plus Jakarta Sans, sans-serif',
-                  transition: 'all 0.2s',
+                  transition: 'all 0.2s', whiteSpace: 'nowrap',
                 }}>
                   {cat.label}
                 </button>
@@ -138,23 +146,24 @@ const Hero = () => {
             </div>
 
             {/* Skill Cards */}
-            <div style={{ display: 'grid', gridTemplateColumns: active.skills.length === 3 ? '1fr 1fr 1fr' : '1fr 1fr', gap: '10px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: getSkillGrid(active.label, active.skills.length), gap: '10px' }}>
               {active.skills.map(skill => (
                 <div key={skill.name} style={{
                   background: 'rgba(255,255,255,0.04)',
                   border: '0.5px solid rgba(255,255,255,0.07)',
-                  borderRadius: '10px', padding: '14px 12px',
-                  display: 'flex', alignItems: 'center', gap: '10px',
+                  borderRadius: '10px', padding: '12px',
+                  display: 'flex', alignItems: 'center', gap: '8px',
                   transition: 'border-color 0.2s',
+                  minWidth: 0,
                 }}
                   onMouseEnter={e => e.currentTarget.style.borderColor = active.border}
                   onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'}
                 >
-                  <img src={skill.logo} alt={skill.name} width="24" height="24"
+                  <img src={skill.logo} alt={skill.name} width="22" height="22"
                     style={{ objectFit: 'contain', flexShrink: 0 }}
                     onError={e => { e.target.style.display = 'none' }}
                   />
-                  <span style={{ fontSize: '12px', color: '#C9D1D9', fontWeight: '400' }}>
+                  <span style={{ fontSize: '12px', color: '#C9D1D9', fontWeight: '400', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {skill.name}
                   </span>
                 </div>
@@ -172,7 +181,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Impact Cards — OUTSIDE grid, full width */}
+      {/* Impact Cards — full width below hero */}
       <div className="impact-strip">
         {impactCards.map((card, i) => (
           <Link key={i} to={`/projects/${card.projectId}`} style={{ textDecoration: 'none', flex: '1 1 0', minWidth: 0 }}>
@@ -180,7 +189,7 @@ const Hero = () => {
               background: card.bg,
               border: `0.5px solid ${card.border}`,
               borderRadius: '12px',
-              padding: '18px 12px',
+              padding: '20px 14px',
               backdropFilter: 'blur(8px)',
               WebkitBackdropFilter: 'blur(8px)',
               cursor: 'pointer',
@@ -216,7 +225,18 @@ const Hero = () => {
           align-items: start;
         }
         .hero-h1 { font-size: 48px; }
-        .hero-skills-wrap { display: flex; justify-content: flex-end; width: 100%; }
+        .hero-skills-wrap {
+          display: flex;
+          justify-content: flex-end;
+          width: 100%;
+          min-width: 0;
+          overflow: hidden;
+        }
+        .hero-skills-wrap > div {
+          width: 100%;
+          min-width: 0;
+          overflow: hidden;
+        }
         .impact-strip {
           display: flex;
           flex-direction: row;
@@ -229,13 +249,28 @@ const Hero = () => {
           min-width: 0;
         }
         @media (max-width: 768px) {
-          .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+          .hero-grid { grid-template-columns: 1fr; gap: 32px; }
           .hero-h1 { font-size: 34px; letter-spacing: -1px; }
           .hero-left { text-align: center; align-items: center; display: flex; flex-direction: column; }
           .hero-left p { text-align: center; }
-          .hero-skills-wrap { justify-content: center; }
-          .impact-strip { flex-wrap: wrap; }
-          .impact-strip > a { flex: 0 0 calc(50% - 6px); }
+          .hero-skills-wrap { justify-content: center; width: 100%; }
+          .impact-strip {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+          }
+          .impact-strip > a {
+            flex: unset;
+          }
+          .impact-strip > a > div {
+            padding: 16px 10px;
+          }
+          .impact-strip > a > div > div:first-child {
+            font-size: 18px;
+          }
+          .impact-strip > a > div > div:last-child {
+            font-size: 10px;
+          }
         }
       `}</style>
     </section>
