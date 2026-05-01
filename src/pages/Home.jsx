@@ -79,76 +79,74 @@ const Home = () => {
         {/* About Section */}
         <section style={{ borderTop: '0.5px solid rgba(255,255,255,0.06)', padding: '80px 20px' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-            <div className="about-grid">
 
-              {/* Left - Glass Identity Card */}
-              <div className="about-left">
-                <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '16px' }}>
-                  Background
+            {/* Section label */}
+            <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '12px' }}>
+              Background
+            </div>
+
+            {/* Heading + Identity Row */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px', marginBottom: '32px' }}>
+              <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '36px', fontWeight: '700', color: '#F9FAFB', letterSpacing: '-0.8px', margin: 0 }}>
+                About Me
+              </h2>
+
+              {/* Identity pill */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', background: 'rgba(255,255,255,0.03)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '100px', padding: '8px 16px 8px 8px' }}>
+                <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #1D4ED8, #3B82F6)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontSize: '13px', fontWeight: '800', color: '#fff', flexShrink: 0 }}>
+                  SD
                 </div>
-                <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '36px', fontWeight: '700', color: '#F9FAFB', letterSpacing: '-0.8px', marginBottom: '20px' }}>
-                  About Me
-                </h2>
-
-                <div style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '20px', marginBottom: '16px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
-                    <div style={{ width: '56px', height: '56px', background: 'linear-gradient(135deg, #1D4ED8, #3B82F6)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontSize: '18px', fontWeight: '800', color: '#fff', flexShrink: 0 }}>
-                      SD
-                    </div>
-                    <div>
-                      <div style={{ fontWeight: '600', color: '#F3F4F6', fontSize: '15px' }}>Sujal Deb</div>
-                      <div style={{ fontSize: '12px', color: '#9CA3AF', marginTop: '2px' }}>
-                        Data Scientist <span style={{ color: '#4B5563' }}>|</span> Data Analyst
-                      </div>
-                      <div style={{ fontSize: '11px', color: '#6B7280', marginTop: '2px' }}>B.Tech CSE 2024</div>
-                    </div>
-                  </div>
-                  <div style={{ borderTop: '0.5px solid rgba(255,255,255,0.06)', paddingTop: '14px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    {[
-                      { label: 'Location', value: 'India' },
-                      { label: 'Status', value: 'Open to Work' },
-                      { label: 'Focus', value: 'Data Science & ML' },
-                    ].map(item => (
-                      <div key={item.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ fontSize: '11px', color: '#4B5563', fontWeight: '400' }}>{item.label}</span>
-                        <span style={{ fontSize: '11px', color: '#9CA3AF', fontWeight: '400' }}>{item.value}</span>
-                      </div>
-                    ))}
-                  </div>
+                <div>
+                  <div style={{ fontWeight: '600', color: '#F3F4F6', fontSize: '13px', lineHeight: '1.2' }}>Sujal Deb</div>
+                  <div style={{ fontSize: '11px', color: '#6B7280', marginTop: '1px' }}>Data Scientist · Data Analyst · B.Tech CSE 2024</div>
                 </div>
-
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(34,197,94,0.08)', border: '0.5px solid rgba(34,197,94,0.2)', padding: '6px 14px', borderRadius: '100px', fontSize: '12px', color: '#86EFAC' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginLeft: '8px', paddingLeft: '12px', borderLeft: '0.5px solid rgba(255,255,255,0.08)' }}>
                   <span style={{ width: '6px', height: '6px', background: '#22C55E', borderRadius: '50%' }} />
-                  Available for hire
+                  <span style={{ fontSize: '11px', color: '#86EFAC' }}>Available</span>
                 </div>
               </div>
+            </div>
 
-              {/* Right */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {/* Main Glass Card */}
+            <div style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '20px', overflow: 'hidden', borderLeft: '3px solid #3B82F6' }}>
+              <div className="about-card-grid">
 
-                {/* Bio Glass Card */}
-                <div style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '24px' }}>
-                  <p style={{ color: '#C9D1D9', fontSize: '15px', lineHeight: '1.8', marginBottom: '12px', fontWeight: '400' }}>
-                    I approach data problems end-to-end — from extracting and cleaning raw data
-                    to building models and delivering insights that stakeholders can actually use.
+                {/* Left — Bio */}
+                <div style={{ padding: '32px', borderRight: '0.5px solid rgba(255,255,255,0.06)' }}>
+                  <div style={{ fontSize: '10px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '16px' }}>
+                    Who I Am
+                  </div>
+                  <p style={{ color: '#C9D1D9', fontSize: '14.5px', lineHeight: '1.85', marginBottom: '16px', fontWeight: '400' }}>
+                    I approach data problems end-to-end — from extracting and cleaning raw datasets to engineering features, training models, and delivering insights that stakeholders can actually act on.
                   </p>
-                  <p style={{ color: '#9CA3AF', fontSize: '14px', lineHeight: '1.8', margin: 0, fontWeight: '300' }}>
-                    My work sits at the intersection of analysis, engineering, and business decision-making.
+                  <p style={{ color: '#9CA3AF', fontSize: '14px', lineHeight: '1.85', marginBottom: '16px', fontWeight: '300' }}>
+                    My work sits at the intersection of analysis, engineering, and business decision-making — bridging the gap between technical complexity and real-world outcomes.
+                  </p>
+                  <p style={{ color: '#9CA3AF', fontSize: '14px', lineHeight: '1.85', margin: 0, fontWeight: '300' }}>
+                    I care deeply about building things that are not just accurate but also explainable, scalable, and useful to the people who rely on them.
                   </p>
                 </div>
 
-                {/* Bullets Glass Card */}
-                <div style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '24px' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                {/* Right — Bullets */}
+                <div style={{ padding: '32px' }}>
+                  <div style={{ fontSize: '10px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '16px' }}>
+                    What I Do
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                     {[
-                      'Build pipelines from messy, real-world data',
-                      'Apply ML & statistical methods to predict outcomes',
-                      'Turn insights into dashboards stakeholders actually use',
-                      'Prioritize clarity, scalability, and measurable impact',
+                      { text: 'Build structured pipelines from messy, real-world data', color: '#3B82F6' },
+                      { text: 'Apply ML & statistical methods to predict outcomes and uncover patterns', color: '#8B5CF6' },
+                      { text: 'Turn technical findings into dashboards and reports stakeholders actually use', color: '#10B981' },
+                      { text: 'Write clean, optimized SQL to extract and transform data at scale', color: '#06B6D4' },
+                      { text: 'Prioritize clarity, scalability, and measurable business impact in every project', color: '#F59E0B' },
                     ].map((b, i) => (
                       <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#3B82F6', flexShrink: 0, marginTop: '7px' }} />
-                        <span style={{ color: '#C9D1D9', fontSize: '14px', lineHeight: '1.7', fontWeight: '300' }}>{b}</span>
+                        <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: b.color + '20', border: `0.5px solid ${b.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '1px' }}>
+                          <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                            <path d="M1 4L3.5 6.5L9 1" stroke={b.color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </div>
+                        <span style={{ color: '#C9D1D9', fontSize: '14px', lineHeight: '1.7', fontWeight: '300' }}>{b.text}</span>
                       </div>
                     ))}
                   </div>
@@ -209,7 +207,7 @@ const Home = () => {
         <style>{`
           .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
           .preview-strip { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
-          .about-grid { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: start; }
+          .about-card-grid { display: grid; grid-template-columns: 1fr 1fr; }
           .competencies-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 10px; }
           @media (max-width: 1024px) {
             .competencies-grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
@@ -217,8 +215,8 @@ const Home = () => {
           @media (max-width: 768px) {
             .projects-grid { grid-template-columns: 1fr; }
             .preview-strip { grid-template-columns: 1fr 1fr; gap: 12px; }
-            .about-grid { grid-template-columns: 1fr; gap: 32px; }
-            .about-left { text-align: center; display: flex; flex-direction: column; align-items: center; }
+            .about-card-grid { grid-template-columns: 1fr; }
+            .about-card-grid > div:first-child { border-right: none !important; border-bottom: 0.5px solid rgba(255,255,255,0.06); }
             .competencies-grid { grid-template-columns: 1fr 1fr 1fr; }
           }
           @media (max-width: 480px) {
