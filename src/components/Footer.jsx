@@ -14,7 +14,7 @@ const Footer = () => {
             Sujal <span style={{ color: '#3B82F6' }}>Deb</span>
           </div>
           <div style={{ fontSize: '12px', color: '#374151' }}>
-            © 2025 · Built with React + Tailwind
+            © 2026 · Built with React
           </div>
         </div>
 
