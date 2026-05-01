@@ -90,8 +90,8 @@ const Hero = () => {
 
         {/* Left */}
         <div className="hero-left">
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(59,130,246,0.12)', border: '0.5px solid rgba(59,130,246,0.3)', color: '#93C5FD', padding: '5px 14px', borderRadius: '100px', fontSize: '12px', marginBottom: '24px' }}>
-            <span style={{ width: '6px', height: '6px', background: '#3B82F6', borderRadius: '50%' }} />
+         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(34,197,94,0.1)', border: '0.5px solid rgba(34,197,94,0.3)', color: '#86EFAC', padding: '5px 14px', borderRadius: '100px', fontSize: '12px', marginBottom: '24px' }}>
+  <span style={{ width: '6px', height: '6px', background: '#22C55E', borderRadius: '50%' }} />
             Open to opportunities
           </div>
 
@@ -114,7 +114,7 @@ const Hero = () => {
             <Link to="/projects" style={{ background: '#3B82F6', color: '#fff', padding: '12px 24px', borderRadius: '8px', fontSize: '14px', fontWeight: '500', textDecoration: 'none' }}>
               View Projects →
             </Link>
-            <a href="mailto:sujaldeb1@gmail.com" style={{ background: 'transparent', color: '#9CA3AF', padding: '12px 24px', borderRadius: '8px', fontSize: '14px', textDecoration: 'none', border: '0.5px solid rgba(255,255,255,0.15)' }}>
+            <a href="mailto:sujaldeb1@gmail.com" style={{ background: 'transparent', color: '#9CA3AF', padding: '12px 24px', borderRadius: '8px', fontSize: '14px', textDecoration: 'none', border: '0.5px solid rgba(255,255,255,0.35)' }}>
               Let's Talk
             </a>
           </div>
@@ -124,7 +124,7 @@ const Hero = () => {
         <div className="hero-skills-wrap">
           <div style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '20px', padding: '24px', width: '100%', boxSizing: 'border-box' }}>
 
-            <div style={{ fontSize: '10px', letterSpacing: '2px', color: '#4B5563', textTransform: 'uppercase', fontWeight: '500', marginBottom: '14px' }}>
+            <div style={{ fontSize: '10px', letterSpacing: '2px', color: '#9CA3AF', textTransform: 'uppercase', fontWeight: '500', marginBottom: '14px' }}>
               Tech Stack
             </div>
 
@@ -173,7 +173,7 @@ const Hero = () => {
             {/* Footer */}
             <div style={{ marginTop: '16px', paddingTop: '14px', borderTop: '0.5px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', gap: '6px' }}>
               <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: active.color }} />
-              <span style={{ fontSize: '11px', color: '#4B5563', fontWeight: '300' }}>
+              <span style={{ fontSize: '11px', color: '#9CA3AF', fontWeight: '300' }}>
                 {active.skills.length} tools in {active.label}
               </span>
             </div>
