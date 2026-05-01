@@ -25,6 +25,7 @@ const Home = () => {
     { name: 'Communication', color: '#8B5CF6' },
     { name: 'Problem Solving', color: '#10B981' },
     { name: 'Attention to Detail', color: '#06B6D4' },
+    { name: 'Data Storytelling', color: '#F59E0B' },
   ]
 
   return (
@@ -37,8 +38,6 @@ const Home = () => {
 
         {/* Project Preview Strip + Featured Projects */}
         <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '80px 20px' }}>
-
-          {/* Preview Strip */}
           <div style={{ marginBottom: '64px' }}>
             <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '20px' }}>
               Project Previews
@@ -76,7 +75,6 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Featured Projects Header */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}>
             <div>
               <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '8px' }}>
@@ -100,60 +98,78 @@ const Home = () => {
 
         {/* About Section */}
         <section style={{ borderTop: '0.5px solid rgba(255,255,255,0.06)', padding: '80px 20px' }}>
-          <div style={{ maxWidth: '1100px', margin: '0 auto' }} className="about-grid">
+          <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
 
-            {/* Left */}
-            <div className="about-left">
-              <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '12px' }}>
-                Background
-              </div>
-              <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '36px', fontWeight: '700', color: '#F9FAFB', letterSpacing: '-0.8px', marginBottom: '24px' }}>
-                About Me
-              </h2>
+            {/* Top about grid — identity left, text right */}
+            <div className="about-grid">
 
-              {/* Avatar */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
-                <div style={{ width: '64px', height: '64px', background: 'linear-gradient(135deg, #1D4ED8, #3B82F6)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontSize: '20px', fontWeight: '800', color: '#fff', flexShrink: 0 }}>
-                  SD
+              {/* Left */}
+              <div className="about-left">
+                <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '12px' }}>
+                  Background
                 </div>
-                <div>
-                  <div style={{ fontWeight: '600', color: '#F3F4F6', fontSize: '16px' }}>Sujal Deb</div>
-                  <div style={{ fontSize: '13px', color: '#9CA3AF', marginTop: '2px' }}>
-                    Data Scientist <span style={{ color: '#4B5563' }}>|</span> Data Analyst
+                <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '36px', fontWeight: '700', color: '#F9FAFB', letterSpacing: '-0.8px', marginBottom: '24px' }}>
+                  About Me
+                </h2>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+                  <div style={{ width: '64px', height: '64px', background: 'linear-gradient(135deg, #1D4ED8, #3B82F6)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontSize: '20px', fontWeight: '800', color: '#fff', flexShrink: 0 }}>
+                    SD
                   </div>
-                  <div style={{ fontSize: '12px', color: '#6B7280', marginTop: '3px' }}>B.Tech CSE 2024</div>
+                  <div>
+                    <div style={{ fontWeight: '600', color: '#F3F4F6', fontSize: '16px' }}>Sujal Deb</div>
+                    <div style={{ fontSize: '13px', color: '#9CA3AF', marginTop: '2px' }}>
+                      Data Scientist <span style={{ color: '#4B5563' }}>|</span> Data Analyst
+                    </div>
+                    <div style={{ fontSize: '12px', color: '#6B7280', marginTop: '3px' }}>B.Tech CSE 2024</div>
+                  </div>
+                </div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(34,197,94,0.08)', border: '0.5px solid rgba(34,197,94,0.2)', padding: '6px 14px', borderRadius: '100px', fontSize: '12px', color: '#86EFAC' }}>
+                  <span style={{ width: '6px', height: '6px', background: '#22C55E', borderRadius: '50%' }} />
+                  Available for hire
                 </div>
               </div>
 
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(34,197,94,0.08)', border: '0.5px solid rgba(34,197,94,0.2)', padding: '6px 14px', borderRadius: '100px', fontSize: '12px', color: '#86EFAC' }}>
-                <span style={{ width: '6px', height: '6px', background: '#22C55E', borderRadius: '50%' }} />
-                Available for hire
+              {/* Right */}
+              <div>
+                <p style={{ color: '#C9D1D9', fontSize: '15px', lineHeight: '1.8', marginBottom: '16px', fontWeight: '400' }}>
+                  I approach data problems end-to-end — from extracting and cleaning raw data to building models and delivering insights that stakeholders can actually use.
+                </p>
+                <p style={{ color: '#9CA3AF', fontSize: '14px', lineHeight: '1.8', marginBottom: '28px', fontWeight: '300' }}>
+                  My work sits at the intersection of analysis, engineering, and business decision-making.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  {bullets.map((b, i) => (
+                    <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                      <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#3B82F6', flexShrink: 0, marginTop: '7px' }} />
+                      <span style={{ color: '#C9D1D9', fontSize: '14px', lineHeight: '1.7', fontWeight: '300' }}>{b}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Right */}
-            <div>
-              <p style={{ color: '#C9D1D9', fontSize: '15px', lineHeight: '1.8', marginBottom: '16px', fontWeight: '400' }}>
-                I approach data problems end-to-end — from extracting and cleaning raw data to building models and delivering insights that stakeholders can actually use.
-              </p>
-              <p style={{ color: '#9CA3AF', fontSize: '14px', lineHeight: '1.8', marginBottom: '28px', fontWeight: '300' }}>
-                My work sits at the intersection of analysis, engineering, and business decision-making.
-              </p>
-
-              {/* Bullet Points */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px' }}>
-                {bullets.map((b, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                    <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#3B82F6', flexShrink: 0, marginTop: '7px' }} />
-                    <span style={{ color: '#C9D1D9', fontSize: '14px', lineHeight: '1.7', fontWeight: '300' }}>{b}</span>
-                  </div>
-                ))}
+            {/* Competencies — full width below */}
+            <div style={{ marginTop: '48px', paddingTop: '40px', borderTop: '0.5px solid rgba(255,255,255,0.06)' }}>
+              <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '20px' }}>
+                Core Competencies
               </div>
-
-              {/* Competencies */}
               <div className="competencies-grid">
                 {competencies.map(c => (
-                  <div key={c.name} style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '8px', padding: '9px 14px', fontSize: '12px', color: '#C9D1D9', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div key={c.name} style={{
+                    background: 'rgba(255,255,255,0.03)',
+                    backdropFilter: 'blur(8px)',
+                    WebkitBackdropFilter: 'blur(8px)',
+                    border: '0.5px solid rgba(255,255,255,0.08)',
+                    borderRadius: '10px',
+                    padding: '12px 14px',
+                    fontSize: '12px',
+                    color: '#C9D1D9',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    textAlign: 'center',
+                  }}>
                     <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: c.color, flexShrink: 0 }} />
                     {c.name}
                   </div>
@@ -187,14 +203,19 @@ const Home = () => {
         <style>{`
           .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
           .preview-strip { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
-          .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
-          .competencies-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+          .about-grid { display: grid; grid-template-columns: 280px 1fr; gap: 64px; align-items: start; }
+          .competencies-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 10px; }
+          @media (max-width: 1024px) {
+            .competencies-grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
+          }
           @media (max-width: 768px) {
             .projects-grid { grid-template-columns: 1fr; }
             .preview-strip { grid-template-columns: 1fr 1fr; gap: 12px; }
             .about-grid { grid-template-columns: 1fr; gap: 32px; }
             .about-left { text-align: center; display: flex; flex-direction: column; align-items: center; }
-            .about-left > div:first-child { align-self: center; }
+            .competencies-grid { grid-template-columns: 1fr 1fr 1fr; }
+          }
+          @media (max-width: 480px) {
             .competencies-grid { grid-template-columns: 1fr 1fr; }
           }
         `}</style>
