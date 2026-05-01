@@ -98,7 +98,7 @@ const Hero = () => {
           <h1 className="hero-h1" style={{ fontFamily: 'Outfit, sans-serif', fontWeight: '800', lineHeight: '1.08', letterSpacing: '-1.5px', color: '#F9FAFB', marginBottom: '20px' }}>
             Data Analyst<br />
             <span style={{ background: 'linear-gradient(135deg, #3B82F6, #60A5FA)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              & ML Engineer
+              & Data Scientist
             </span>
           </h1>
 
