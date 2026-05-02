@@ -17,6 +17,21 @@ const placeholderImages = (color) => [
   { label: 'Details',  bg: `linear-gradient(135deg, ${color}18, ${color}38)` },
 ]
 
+const BulletList = ({ items, accent }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+    {items.map((b, i) => (
+      <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+        <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: accent + '20', border: `0.5px solid ${accent}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+          <svg width="8" height="7" viewBox="0 0 10 8" fill="none">
+            <path d="M1 4L3.5 6.5L9 1" stroke={accent} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+        <span style={{ color: '#E5E7EB', fontSize: '15px', lineHeight: '1.7', fontWeight: '300' }}>{b}</span>
+      </div>
+    ))}
+  </div>
+)
+
 const ProjectDetail = () => {
   const { id } = useParams()
   const project = projects.find(p => p.id === id)
@@ -90,23 +105,41 @@ const ProjectDetail = () => {
             <div style={{ fontSize: '9px', letterSpacing: '2px', color: tag.color, textTransform: 'uppercase', fontWeight: '500', marginBottom: '6px' }}>
               Key Insights
             </div>
+
+            {/* Primary metric */}
             <div style={{ fontFamily: 'Outfit, sans-serif', fontSize: '48px', fontWeight: '800', color: tag.color, letterSpacing: '-2px', lineHeight: '1', textShadow: `0 0 24px ${tag.accent}40` }}>
               {project.metric}
             </div>
-            <div style={{ fontSize: '13px', color: '#E5E7EB', marginTop: '2px', fontWeight: '300' }}>
+            <div style={{ fontSize: '13px', color: '#E5E7EB', marginTop: '2px', fontWeight: '300', textAlign: 'center' }}>
               {project.metricLabel}
             </div>
 
-            <div style={{ width: '32px', height: '1px', background: `${tag.accent}40`, margin: '10px 0' }} />
+            {/* Divider */}
+            <div style={{ width: '32px', height: '1px', background: `${tag.accent}40`, margin: '14px 0' }} />
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '7px', width: '100%' }}>
-              {project.tools.slice(0, 3).map(tool => (
-                <div key={tool} style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
-                  <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: tag.accent }} />
-                  <span style={{ fontSize: '12px', color: '#9CA3AF', fontWeight: '300' }}>{tool}</span>
+            {/* Secondary metric if exists */}
+            {project.metric2 ? (
+              <>
+                <div style={{ fontSize: '9px', letterSpacing: '2px', color: tag.color, textTransform: 'uppercase', fontWeight: '500', marginBottom: '6px' }}>
+                  Additional Insight
                 </div>
-              ))}
-            </div>
+                <div style={{ fontFamily: 'Outfit, sans-serif', fontSize: '36px', fontWeight: '800', color: tag.color, letterSpacing: '-1px', lineHeight: '1', textShadow: `0 0 24px ${tag.accent}40` }}>
+                  {project.metric2}
+                </div>
+                <div style={{ fontSize: '13px', color: '#E5E7EB', marginTop: '4px', fontWeight: '300', textAlign: 'center' }}>
+                  {project.metric2Label}
+                </div>
+              </>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '7px', width: '100%' }}>
+                {project.tools.slice(0, 3).map(tool => (
+                  <div key={tool} style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
+                    <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: tag.accent }} />
+                    <span style={{ fontSize: '12px', color: '#9CA3AF', fontWeight: '300' }}>{tool}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Image Card */}
@@ -122,8 +155,6 @@ const ProjectDetail = () => {
             borderTop: `2px solid ${tag.accent}`,
             height: '100%',
           }}>
-
-            {/* Image Area — fills all remaining space */}
             <div
               onClick={() => setLightbox(true)}
               style={{
@@ -139,79 +170,60 @@ const ProjectDetail = () => {
                 backgroundSize: '20px 20px',
               }}
             >
-              {/* Chart bars placeholder */}
               <div style={{ position: 'absolute', bottom: '28px', left: '20px', right: '20px', display: 'flex', alignItems: 'flex-end', gap: '4px', height: '80px' }}>
                 {[65,45,80,55,90,40,75,60,85,50,70,95].map((h, j) => (
                   <div key={j} style={{ flex: 1, height: `${h}%`, background: tag.accent + '50', borderRadius: '2px 2px 0 0' }} />
                 ))}
               </div>
-
-              {/* Image label top left */}
               <div style={{ position: 'absolute', top: '12px', left: '12px', background: tag.accent + '25', border: `0.5px solid ${tag.accent}40`, padding: '2px 8px', borderRadius: '4px', fontSize: '10px', color: tag.color, fontWeight: '500', letterSpacing: '0.5px' }}>
                 {images[activeImage].label} · {activeImage + 1}/{images.length}
               </div>
-
-              {/* Zoom hint */}
               <div style={{ position: 'absolute', bottom: '10px', right: '10px', background: 'rgba(0,0,0,0.5)', padding: '3px 7px', borderRadius: '5px', fontSize: '9px', color: '#6B7280' }}>
                 click to enlarge
               </div>
-
-              {/* Prev arrow */}
               {activeImage > 0 && (
-                <button
-                  onClick={e => { e.stopPropagation(); setActiveImage(activeImage - 1) }}
-                  style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', width: '26px', height: '26px', borderRadius: '50%', cursor: 'pointer', fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                >
+                <button onClick={e => { e.stopPropagation(); setActiveImage(activeImage - 1) }} style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', width: '26px', height: '26px', borderRadius: '50%', cursor: 'pointer', fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   ‹
                 </button>
               )}
-
-              {/* Next arrow */}
               {activeImage < images.length - 1 && (
-                <button
-                  onClick={e => { e.stopPropagation(); setActiveImage(activeImage + 1) }}
-                  style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', width: '26px', height: '26px', borderRadius: '50%', cursor: 'pointer', fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                >
+                <button onClick={e => { e.stopPropagation(); setActiveImage(activeImage + 1) }} style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', width: '26px', height: '26px', borderRadius: '50%', cursor: 'pointer', fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   ›
                 </button>
               )}
             </div>
-
-            {/* Dots bottom bar */}
             <div style={{ padding: '12px 16px', borderTop: `0.5px solid ${tag.accent}20`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
               <div style={{ display: 'flex', gap: '5px' }}>
                 {images.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveImage(i)}
-                    style={{ width: activeImage === i ? '18px' : '6px', height: '6px', borderRadius: '3px', background: activeImage === i ? tag.accent : tag.accent + '40', border: 'none', cursor: 'pointer', transition: 'all 0.2s', padding: 0 }}
-                  />
+                  <button key={i} onClick={() => setActiveImage(i)} style={{ width: activeImage === i ? '18px' : '6px', height: '6px', borderRadius: '3px', background: activeImage === i ? tag.accent : tag.accent + '40', border: 'none', cursor: 'pointer', transition: 'all 0.2s', padding: 0 }} />
                 ))}
               </div>
-              <span style={{ fontSize: '10px', color: '#4B5563' }}>
-                {images[activeImage].label}
-              </span>
+              <span style={{ fontSize: '10px', color: '#4B5563' }}>{images[activeImage].label}</span>
             </div>
           </div>
         </div>
 
-        {/* Case Study sections */}
+        {/* Case Study Sections */}
         {[
-          { label: '01 — Problem', content: project.problem },
-          { label: '02 — Approach', content: project.approach },
-          { label: '03 — Result', content: project.result },
+          { label: '01 — Problem', content: project.problem, bullets: project.problemBullets },
+          { label: '02 — Approach', content: project.approach, bullets: project.approachBullets },
+          { label: '03 — Result', content: project.result, bullets: project.resultBullets },
         ].map(section => (
           <div key={section.label} style={{ marginBottom: '36px', paddingBottom: '36px', borderBottom: '0.5px solid rgba(255,255,255,0.06)' }}>
-            <div style={{ fontSize: '11px', letterSpacing: '2px', color: tag.color, textTransform: 'uppercase', fontWeight: '500', marginBottom: '12px' }}>
+            <div style={{ fontSize: '11px', letterSpacing: '2px', color: tag.color, textTransform: 'uppercase', fontWeight: '500', marginBottom: '14px' }}>
               {section.label}
             </div>
-            <p style={{ color: '#E5E7EB', fontSize: '15px', lineHeight: '1.8', fontWeight: '300', margin: 0 }}>
-              {section.content}
-            </p>
+            {section.bullets ? (
+              <BulletList items={section.bullets} accent={tag.accent} />
+            ) : (
+              <p style={{ color: '#E5E7EB', fontSize: '15px', lineHeight: '1.8', fontWeight: '300', margin: 0 }}>
+                {section.content}
+              </p>
+            )}
           </div>
         ))}
 
-        {/* Tools Used */}
+        {/* Tools */}
         <div style={{ marginBottom: '40px' }}>
           <div style={{ fontSize: '11px', letterSpacing: '2px', color: tag.color, textTransform: 'uppercase', fontWeight: '500', marginBottom: '16px' }}>
             04 — Tools Used
@@ -243,10 +255,7 @@ const ProjectDetail = () => {
 
       {/* Lightbox */}
       {lightbox && (
-        <div
-          onClick={() => setLightbox(false)}
-          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}
-        >
+        <div onClick={() => setLightbox(false)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
           <div style={{ width: '100%', maxWidth: '700px', aspectRatio: '16/10', background: images[activeImage].bg, borderRadius: '16px', border: `0.5px solid ${tag.accent}40`, position: 'relative' }}>
             <div style={{ position: 'absolute', bottom: '40px', left: '28px', right: '28px', display: 'flex', alignItems: 'flex-end', gap: '6px', height: '100px' }}>
               {[65,45,80,55,90,40,75,60,85,50,70,95].map((h, j) => (
