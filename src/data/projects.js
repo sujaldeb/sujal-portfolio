@@ -1,20 +1,19 @@
 export const projects = [
   {
-    id: "project-1",
-  title: "Customer Churn Predictor",
-  tag: "ML",
-  featured: true,
-  shortDesc: "Predicted customer churn with 94% accuracy using Random Forest on telecom data. Reduced churn by 18% in simulation.",
-  metric: "94%",
-  metricLabel: "accuracy",
-  problem: "A telecom company was losing customers without knowing who was at risk or why.",
-  approach: "Built a Random Forest classifier trained on 7,000 rows of customer behavior data. Used feature importance to identify top churn drivers.",
-  result: "94% accuracy. Top 3 churn drivers identified: contract type, tenure, and monthly charges.",
-  tools: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
-  github: "https://github.com/sujaldeb/churn-predictor",
-  demo: "https://your-streamlit-app.streamlit.app",
-  images: ["/projects/churn-1.png", "/projects/churn-2.png"],
-  embedType: "streamlit",
+    id: "vendor-performance",
+    title: "Vendor Performance & Inventory Analytics",
+    tag: "Analytics",
+    featured: true,
+    shortDesc: "Built an end-to-end analytics pipeline on 15M+ records to evaluate vendor performance, detect overstock risk, and predict underperforming products.",
+    metric: "80%",
+    metricLabel: "Revenue from Top 17 Vendors",
+    problem: "A liquor distribution business lacked visibility into vendor performance, product profitability, and inventory risk. Data was spread across multiple large CSV files with no centralized system for analysis, making it difficult to identify underperforming products, detect overstock early, or make informed purchasing and vendor decisions.",
+    approach: "Built a scalable data pipeline using Python and SQLite to ingest and process 15M+ records using chunked loading for memory efficiency. Designed SQL-based aggregation pipelines to compute vendor-level and product-level metrics, improving query performance by 48%. Corrected a critical cost allocation issue by implementing proportional freight distribution across products. Performed exploratory data analysis to uncover revenue concentration, inventory trends, and negative profit drivers. Developed a Random Forest model to predict underperforming products using features such as stock turnover, pricing, and sales velocity.",
+    result: "Identified that 17 vendors contribute to 80% of total revenue, highlighting vendor concentration risk. Detected 1,949 underperforming products contributing to over $4M in losses. Achieved 98% model accuracy with 0.987 ROC-AUC and 94% recall on underperforming products. Flagged overstock risk across 83% of vendors and delivered insights through a Power BI dashboard for decision-making.",
+    tools: ["Python", "Pandas", "NumPy", "SQLite", "Scikit-learn", "SciPy", "Power BI"],
+    github: "#",
+    live: "",
+    images: [],
   },
   {
     id: "project-2",
@@ -30,6 +29,7 @@ export const projects = [
     tools: ["Power BI", "SQL", "Excel", "DAX"],
     github: "#",
     live: "",
+    images: [],
   },
   {
     id: "project-3",
@@ -45,6 +45,7 @@ export const projects = [
     tools: ["SQL", "PostgreSQL", "Excel"],
     github: "#",
     live: "",
+    images: [],
   },
   {
     id: "project-4",
@@ -60,6 +61,7 @@ export const projects = [
     tools: ["Python", "HuggingFace", "Flask", "BERT"],
     github: "#",
     live: "",
+    images: [],
   },
   {
     id: "project-5",
@@ -75,6 +77,7 @@ export const projects = [
     tools: ["Python", "Pandas", "Seaborn", "Matplotlib"],
     github: "#",
     live: "",
+    images: [],
   },
   {
     id: "project-6",
@@ -90,6 +93,7 @@ export const projects = [
     tools: ["Python", "Scikit-learn", "PCA", "K-Means"],
     github: "#",
     live: "",
+    images: [],
   },
   {
     id: "project-7",
@@ -105,6 +109,7 @@ export const projects = [
     tools: ["Python", "Prophet", "ARIMA", "Pandas"],
     github: "#",
     live: "",
+    images: [],
   },
   {
     id: "project-8",
@@ -120,6 +125,7 @@ export const projects = [
     tools: ["SQL", "SQLite"],
     github: "#",
     live: "",
+    images: [],
   },
   {
     id: "project-9",
@@ -135,6 +141,7 @@ export const projects = [
     tools: ["Python", "Scikit-learn", "TF-IDF", "SVD"],
     github: "#",
     live: "",
+    images: [],
   },
   {
     id: "project-10",
@@ -150,5 +157,6 @@ export const projects = [
     tools: ["Tableau", "Python", "Excel", "WHO Data"],
     github: "#",
     live: "",
+    images: [],
   },
 ]

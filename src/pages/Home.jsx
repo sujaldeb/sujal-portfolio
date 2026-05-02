@@ -24,7 +24,7 @@ const Home = () => {
             </div>
             <div className="preview-strip">
               {[
-                { title: 'Customer Churn Predictor', tag: 'ML', color: '#3B82F6', gradient: 'linear-gradient(135deg, #1e3a5f, #1D4ED8)', bars: [60,85,45,90,55,75,40,95,65,80] },
+                { title: 'Vendor Performance Analytics', tag: 'Analytics', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #2e1b5e, #6D28D9)', bars: [60,85,45,90,55,75,40,95,65,80] },
                 { title: 'Sales Dashboard', tag: 'Analytics', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #2e1b5e, #6D28D9)', bars: [40,70,90,50,80,60,95,45,75,85] },
                 { title: 'Funnel Analysis', tag: 'SQL', color: '#10B981', gradient: 'linear-gradient(135deg, #0d3b2e, #065F46)', bars: [75,50,85,40,95,55,70,80,45,65] },
                 { title: 'Sentiment API', tag: 'ML', color: '#F59E0B', gradient: 'linear-gradient(135deg, #3b2a0d, #92400E)', bars: [55,80,40,75,90,50,65,85,45,70] },
@@ -80,7 +80,6 @@ const Home = () => {
         <section style={{ borderTop: '0.5px solid rgba(255,255,255,0.06)', padding: '80px 20px' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
 
-            {/* Section label */}
             <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '12px' }}>
               Background
             </div>
@@ -91,13 +90,10 @@ const Home = () => {
                 About Me
               </h2>
 
-              {/* Identity pill with gradient border */}
               <div style={{
                 display: 'flex', alignItems: 'center', gap: '12px',
                 background: 'rgba(255,255,255,0.03)',
                 borderRadius: '100px', padding: '7px 20px 7px 7px',
-                position: 'relative',
-                backgroundClip: 'padding-box',
                 boxShadow: '0 0 0 1px rgba(99,102,241,0.3), 0 0 12px rgba(59,130,246,0.08)',
               }}>
                 <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #1D4ED8, #3B82F6)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontSize: '13px', fontWeight: '800', color: '#fff', flexShrink: 0 }}>
@@ -106,9 +102,9 @@ const Home = () => {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                   <span style={{ fontWeight: '600', color: '#F3F4F6', fontSize: '13px' }}>Sujal Deb</span>
                   <span style={{ color: '#3B82F6', fontSize: '11px', opacity: 0.5 }}>|</span>
-                  <span style={{ fontSize: '12px', color: '#60A5FA', fontWeight: '500', textShadow: '0 0 12px rgba(96,165,250,0.5)' }}>Data Scientist</span>
+                  <span style={{ fontSize: '12px', color: '#60A5FA', fontWeight: '500', textShadow: '0 0 12px rgba(96,165,250,0.5)' }}>Data Analyst</span>
                   <span style={{ color: '#3B82F6', fontSize: '11px', opacity: 0.5 }}>|</span>
-                  <span style={{ fontSize: '12px', color: '#A78BFA', fontWeight: '500', textShadow: '0 0 12px rgba(167,139,250,0.5)' }}>Data Analyst</span>
+                  <span style={{ fontSize: '12px', color: '#A78BFA', fontWeight: '500', textShadow: '0 0 12px rgba(167,139,250,0.5)' }}>Data Scientist</span>
                   <span style={{ color: '#3B82F6', fontSize: '11px', opacity: 0.5 }}>|</span>
                   <span style={{ fontSize: '12px', color: '#6B7280', fontWeight: '400' }}>B.Tech CSE 2024</span>
                 </div>

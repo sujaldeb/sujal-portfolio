@@ -88,7 +88,7 @@ const ProjectDetail = () => {
             borderTop: `2px solid ${tag.accent}`,
           }}>
             <div style={{ fontSize: '9px', letterSpacing: '2px', color: tag.color, textTransform: 'uppercase', fontWeight: '500', marginBottom: '6px' }}>
-              Key Result
+              Key Insights
             </div>
             <div style={{ fontFamily: 'Outfit, sans-serif', fontSize: '48px', fontWeight: '800', color: tag.color, letterSpacing: '-2px', lineHeight: '1', textShadow: `0 0 24px ${tag.accent}40` }}>
               {project.metric}
