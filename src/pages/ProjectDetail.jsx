@@ -45,30 +45,30 @@ const ProjectDetail = () => {
 
       <div style={{ maxWidth: '900px', margin: '0 auto', padding: '56px 20px 80px', position: 'relative', zIndex: 1 }}>
 
-        {/* Back */}
-        <Link to="/projects" style={{ color: '#6B7280', fontSize: '14px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '36px', transition: 'color 0.2s' }}
-          onMouseEnter={e => e.currentTarget.style.color = '#E5E7EB'}
-          onMouseLeave={e => e.currentTarget.style.color = '#6B7280'}
-        >
-          ← Back to Projects
-        </Link>
-
-        {/* Tag */}
-        <span style={{ display: 'inline-block', padding: '3px 10px', borderRadius: '4px', fontSize: '11px', fontWeight: '500', background: tag.bg, color: tag.color, marginBottom: '14px', letterSpacing: '0.3px' }}>
-          {project.tag}
-        </span>
+        {/* Back + Tag row */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '28px' }}>
+          <Link to="/projects" style={{ color: '#6B7280', fontSize: '14px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px', transition: 'color 0.2s' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#E5E7EB'}
+            onMouseLeave={e => e.currentTarget.style.color = '#6B7280'}
+          >
+            ← Back to Projects
+          </Link>
+          <span style={{ display: 'inline-block', padding: '3px 10px', borderRadius: '4px', fontSize: '11px', fontWeight: '500', background: tag.bg, color: tag.color, letterSpacing: '0.3px' }}>
+            {project.tag}
+          </span>
+        </div>
 
         {/* Title */}
-        <h1 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '40px', fontWeight: '700', color: '#F9FAFB', letterSpacing: '-1px', marginBottom: '14px', lineHeight: '1.1' }}>
+        <h1 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '38px', fontWeight: '700', color: '#F9FAFB', letterSpacing: '-1px', marginBottom: '12px', lineHeight: '1.1' }}>
           {project.title}
         </h1>
 
         {/* Subtitle */}
-        <p style={{ color: '#C9D1D9', fontSize: '16px', lineHeight: '1.7', fontWeight: '300', marginBottom: '32px', maxWidth: '700px' }}>
+        <p style={{ color: '#C9D1D9', fontSize: '15px', lineHeight: '1.7', fontWeight: '300', marginBottom: '28px', maxWidth: '680px' }}>
           {project.shortDesc}
         </p>
 
-        {/* Metric + Image Cards — symmetric */}
+        {/* Metric + Image Cards */}
         <div className="detail-cards-grid" style={{ marginBottom: '48px' }}>
 
           {/* Metric Card */}
@@ -82,25 +82,23 @@ const ProjectDetail = () => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '40px 24px',
-            gap: '8px',
+            padding: '28px 20px',
+            gap: '6px',
             borderTop: `2px solid ${tag.accent}`,
           }}>
-            <div style={{ fontSize: '10px', letterSpacing: '2px', color: tag.color, textTransform: 'uppercase', fontWeight: '500', marginBottom: '8px' }}>
+            <div style={{ fontSize: '9px', letterSpacing: '2px', color: tag.color, textTransform: 'uppercase', fontWeight: '500', marginBottom: '6px' }}>
               Key Result
             </div>
-            <div style={{ fontFamily: 'Outfit, sans-serif', fontSize: '64px', fontWeight: '800', color: tag.color, letterSpacing: '-2px', lineHeight: '1', textShadow: `0 0 30px ${tag.accent}40` }}>
+            <div style={{ fontFamily: 'Outfit, sans-serif', fontSize: '48px', fontWeight: '800', color: tag.color, letterSpacing: '-2px', lineHeight: '1', textShadow: `0 0 24px ${tag.accent}40` }}>
               {project.metric}
             </div>
-            <div style={{ fontSize: '14px', color: '#E5E7EB', marginTop: '4px', fontWeight: '300' }}>
+            <div style={{ fontSize: '13px', color: '#E5E7EB', marginTop: '2px', fontWeight: '300' }}>
               {project.metricLabel}
             </div>
 
-            {/* Divider */}
-            <div style={{ width: '40px', height: '1px', background: `${tag.accent}40`, margin: '12px 0' }} />
+            <div style={{ width: '32px', height: '1px', background: `${tag.accent}40`, margin: '10px 0' }} />
 
-            {/* Mini stats */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%', paddingTop: '4px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '7px', width: '100%' }}>
               {project.tools.slice(0, 3).map(tool => (
                 <div key={tool} style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
                   <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: tag.accent }} />
@@ -130,52 +128,52 @@ const ProjectDetail = () => {
                 background: images[activeImage].bg,
                 position: 'relative',
                 cursor: 'zoom-in',
-                minHeight: '200px',
+                minHeight: '160px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 backgroundImage: `linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)`,
-                backgroundSize: '24px 24px',
+                backgroundSize: '20px 20px',
               }}
             >
-              {/* Placeholder chart bars */}
-              <div style={{ position: 'absolute', bottom: '40px', left: '24px', right: '24px', display: 'flex', alignItems: 'flex-end', gap: '6px', height: '80px' }}>
-                {[65, 45, 80, 55, 90, 40, 75, 60, 85, 50, 70, 95].map((h, j) => (
-                  <div key={j} style={{ flex: 1, height: `${h}%`, background: tag.accent + '50', borderRadius: '3px 3px 0 0', transition: 'height 0.3s' }} />
+              {/* Chart bars */}
+              <div style={{ position: 'absolute', bottom: '28px', left: '20px', right: '20px', display: 'flex', alignItems: 'flex-end', gap: '4px', height: '64px' }}>
+                {[65,45,80,55,90,40,75,60,85,50,70,95].map((h, j) => (
+                  <div key={j} style={{ flex: 1, height: `${h}%`, background: tag.accent + '50', borderRadius: '2px 2px 0 0' }} />
                 ))}
               </div>
 
-              {/* Image label */}
-              <div style={{ position: 'absolute', top: '14px', left: '14px', background: tag.accent + '25', border: `0.5px solid ${tag.accent}40`, padding: '3px 10px', borderRadius: '4px', fontSize: '10px', color: tag.color, fontWeight: '500', letterSpacing: '0.5px' }}>
+              {/* Label */}
+              <div style={{ position: 'absolute', top: '12px', left: '12px', background: tag.accent + '25', border: `0.5px solid ${tag.accent}40`, padding: '2px 8px', borderRadius: '4px', fontSize: '10px', color: tag.color, fontWeight: '500', letterSpacing: '0.5px' }}>
                 {images[activeImage].label} · {activeImage + 1}/{images.length}
               </div>
 
               {/* Zoom hint */}
-              <div style={{ position: 'absolute', bottom: '14px', right: '14px', background: 'rgba(0,0,0,0.4)', padding: '4px 8px', borderRadius: '6px', fontSize: '10px', color: '#9CA3AF' }}>
+              <div style={{ position: 'absolute', bottom: '10px', right: '10px', background: 'rgba(0,0,0,0.5)', padding: '3px 7px', borderRadius: '5px', fontSize: '9px', color: '#6B7280' }}>
                 click to enlarge
               </div>
 
-              {/* Prev / Next arrows */}
+              {/* Arrows */}
               {activeImage > 0 && (
-                <button onClick={e => { e.stopPropagation(); setActiveImage(activeImage - 1) }} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', width: '28px', height: '28px', borderRadius: '50%', cursor: 'pointer', fontSize: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <button onClick={e => { e.stopPropagation(); setActiveImage(activeImage - 1) }} style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', width: '26px', height: '26px', borderRadius: '50%', cursor: 'pointer', fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   ‹
                 </button>
               )}
               {activeImage < images.length - 1 && (
-                <button onClick={e => { e.stopPropagation(); setActiveImage(activeImage + 1) }} style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', width: '28px', height: '28px', borderRadius: '50%', cursor: 'pointer', fontSize: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <button onClick={e => { e.stopPropagation(); setActiveImage(activeImage + 1) }} style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', width: '26px', height: '26px', borderRadius: '50%', cursor: 'pointer', fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   ›
                 </button>
               )}
             </div>
 
-            {/* Dot indicators + thumbnails */}
-            <div style={{ padding: '16px 20px', borderTop: `0.5px solid ${tag.accent}20`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <div style={{ display: 'flex', gap: '6px' }}>
+            {/* Dots */}
+            <div style={{ padding: '12px 16px', borderTop: `0.5px solid ${tag.accent}20`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', gap: '5px' }}>
                 {images.map((_, i) => (
-                  <button key={i} onClick={() => setActiveImage(i)} style={{ width: activeImage === i ? '20px' : '6px', height: '6px', borderRadius: '3px', background: activeImage === i ? tag.accent : tag.accent + '40', border: 'none', cursor: 'pointer', transition: 'all 0.2s', padding: 0 }} />
+                  <button key={i} onClick={() => setActiveImage(i)} style={{ width: activeImage === i ? '18px' : '6px', height: '6px', borderRadius: '3px', background: activeImage === i ? tag.accent : tag.accent + '40', border: 'none', cursor: 'pointer', transition: 'all 0.2s', padding: 0 }} />
                 ))}
               </div>
-              <span style={{ fontSize: '11px', color: '#4B5563' }}>
+              <span style={{ fontSize: '10px', color: '#4B5563' }}>
                 {images[activeImage].label}
               </span>
             </div>
@@ -230,20 +228,17 @@ const ProjectDetail = () => {
 
       {/* Lightbox */}
       {lightbox && (
-        <div
-          onClick={() => setLightbox(false)}
-          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}
-        >
-          <div style={{ width: '100%', maxWidth: '800px', aspectRatio: '16/10', background: images[activeImage].bg, borderRadius: '16px', border: `0.5px solid ${tag.accent}40`, position: 'relative', display: 'flex', alignItems: 'flex-end', padding: '32px' }}>
-            <div style={{ position: 'absolute', bottom: '48px', left: '32px', right: '32px', display: 'flex', alignItems: 'flex-end', gap: '8px', height: '120px' }}>
+        <div onClick={() => setLightbox(false)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+          <div style={{ width: '100%', maxWidth: '700px', aspectRatio: '16/10', background: images[activeImage].bg, borderRadius: '16px', border: `0.5px solid ${tag.accent}40`, position: 'relative' }}>
+            <div style={{ position: 'absolute', bottom: '40px', left: '28px', right: '28px', display: 'flex', alignItems: 'flex-end', gap: '6px', height: '100px' }}>
               {[65,45,80,55,90,40,75,60,85,50,70,95].map((h, j) => (
-                <div key={j} style={{ flex: 1, height: `${h}%`, background: tag.accent + '60', borderRadius: '4px 4px 0 0' }} />
+                <div key={j} style={{ flex: 1, height: `${h}%`, background: tag.accent + '60', borderRadius: '3px 3px 0 0' }} />
               ))}
             </div>
-            <div style={{ position: 'absolute', top: '16px', right: '16px', background: 'rgba(0,0,0,0.6)', color: '#9CA3AF', fontSize: '12px', padding: '6px 12px', borderRadius: '6px' }}>
-              click anywhere to close
+            <div style={{ position: 'absolute', top: '14px', right: '14px', background: 'rgba(0,0,0,0.6)', color: '#9CA3AF', fontSize: '11px', padding: '5px 10px', borderRadius: '6px' }}>
+              click to close
             </div>
-            <div style={{ position: 'absolute', top: '16px', left: '16px', background: tag.accent + '25', border: `0.5px solid ${tag.accent}40`, padding: '4px 12px', borderRadius: '4px', fontSize: '11px', color: tag.color, fontWeight: '500' }}>
+            <div style={{ position: 'absolute', top: '14px', left: '14px', background: tag.accent + '25', border: `0.5px solid ${tag.accent}40`, padding: '3px 10px', borderRadius: '4px', fontSize: '10px', color: tag.color, fontWeight: '500' }}>
               {images[activeImage].label} · {activeImage + 1}/{images.length}
             </div>
           </div>
@@ -259,7 +254,7 @@ const ProjectDetail = () => {
         .glow-bg::before {
           content: ''; position: absolute;
           top: -200px; left: -100px;
-          width: 600px; height: 600px;
+          width: 500px; height: 500px;
           background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
           border-radius: 50%;
         }
@@ -267,9 +262,10 @@ const ProjectDetail = () => {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 20px;
+          max-width: 680px;
         }
         @media (max-width: 640px) {
-          .detail-cards-grid { grid-template-columns: 1fr; }
+          .detail-cards-grid { grid-template-columns: 1fr; max-width: 100%; }
         }
       `}</style>
 
