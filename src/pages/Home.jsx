@@ -127,10 +127,10 @@ const Home = () => {
                   <p style={{ color: '#C9D1D9', fontSize: '14.5px', lineHeight: '1.85', marginBottom: '16px', fontWeight: '400' }}>
                     I approach data problems end-to-end — from extracting and cleaning raw datasets to engineering features, training models, and delivering insights that stakeholders can actually act on.
                   </p>
-                  <p style={{ color: '#9CA3AF', fontSize: '14px', lineHeight: '1.85', marginBottom: '16px', fontWeight: '300' }}>
+                  <p style={{ color: '#C9D1D9', fontSize: '14px', lineHeight: '1.85', marginBottom: '16px', fontWeight: '300' }}>
                     My work sits at the intersection of analysis, engineering, and business decision-making — bridging the gap between technical complexity and real-world outcomes.
                   </p>
-                  <p style={{ color: '#9CA3AF', fontSize: '14px', lineHeight: '1.85', margin: 0, fontWeight: '300' }}>
+                  <p style={{ color: '#C9D1D9', fontSize: '14px', lineHeight: '1.85', margin: 0, fontWeight: '300' }}>
                     I care deeply about building things that are not just accurate but also explainable, scalable, and useful to the people who rely on them.
                   </p>
                 </div>
