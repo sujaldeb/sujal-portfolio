@@ -85,24 +85,32 @@ const Home = () => {
               Background
             </div>
 
-            {/* Heading + Identity Row */}
+            {/* Heading + Identity Pill */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px', marginBottom: '32px' }}>
               <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '36px', fontWeight: '700', color: '#F9FAFB', letterSpacing: '-0.8px', margin: 0 }}>
                 About Me
               </h2>
 
-              {/* Identity pill */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', background: 'rgba(255,255,255,0.03)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '100px', padding: '8px 16px 8px 8px' }}>
+              {/* Identity pill with gradient border */}
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: '12px',
+                background: 'rgba(255,255,255,0.03)',
+                borderRadius: '100px', padding: '7px 20px 7px 7px',
+                position: 'relative',
+                backgroundClip: 'padding-box',
+                boxShadow: '0 0 0 1px rgba(99,102,241,0.3), 0 0 12px rgba(59,130,246,0.08)',
+              }}>
                 <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #1D4ED8, #3B82F6)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontSize: '13px', fontWeight: '800', color: '#fff', flexShrink: 0 }}>
                   SD
                 </div>
-                <div>
-                  <div style={{ fontWeight: '600', color: '#F3F4F6', fontSize: '13px', lineHeight: '1.2' }}>Sujal Deb</div>
-                  <div style={{ fontSize: '11px', color: '#6B7280', marginTop: '1px' }}>Data Scientist · Data Analyst · B.Tech CSE 2024</div>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginLeft: '8px', paddingLeft: '12px', borderLeft: '0.5px solid rgba(255,255,255,0.08)' }}>
-                  <span style={{ width: '6px', height: '6px', background: '#22C55E', borderRadius: '50%' }} />
-                  <span style={{ fontSize: '11px', color: '#86EFAC' }}>Available</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                  <span style={{ fontWeight: '600', color: '#F3F4F6', fontSize: '13px' }}>Sujal Deb</span>
+                  <span style={{ color: '#3B82F6', fontSize: '11px', opacity: 0.5 }}>|</span>
+                  <span style={{ fontSize: '12px', color: '#60A5FA', fontWeight: '500', textShadow: '0 0 12px rgba(96,165,250,0.5)' }}>Data Scientist</span>
+                  <span style={{ color: '#3B82F6', fontSize: '11px', opacity: 0.5 }}>|</span>
+                  <span style={{ fontSize: '12px', color: '#A78BFA', fontWeight: '500', textShadow: '0 0 12px rgba(167,139,250,0.5)' }}>Data Analyst</span>
+                  <span style={{ color: '#3B82F6', fontSize: '11px', opacity: 0.5 }}>|</span>
+                  <span style={{ fontSize: '12px', color: '#6B7280', fontWeight: '400' }}>B.Tech CSE 2024</span>
                 </div>
               </div>
             </div>
@@ -190,14 +198,14 @@ const Home = () => {
             <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '36px', fontWeight: '700', color: '#F9FAFB', letterSpacing: '-0.8px', marginBottom: '16px' }}>
               Let's work together
             </h2>
-            <p style={{ color: '#9CA3AF', fontSize: '15px', lineHeight: '1.7', marginBottom: '32px', fontWeight: '300' }}>
+            <p style={{ color: '#6B7280', fontSize: '15px', lineHeight: '1.7', marginBottom: '32px', fontWeight: '300' }}>
               I'm currently open to full-time roles and internships in Data Analytics, Data Science, and ML Engineering.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="mailto:sujaldeb1@gmail.com" style={{ background: '#3B82F6', color: '#fff', padding: '13px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '500', textDecoration: 'none' }}>
                 Get in Touch →
               </a>
-              <a href="https://linkedin.com/in/sujal-deb/" target="_blank" rel="noreferrer" style={{ background: 'rgba(255,255,255,0.05)', color: '#9CA3AF', padding: '13px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '400', textDecoration: 'none', border: '0.5px solid rgba(255,255,255,0.1)' }}>
+              <a href="https://linkedin.com/in/sujal-deb/" target="_blank" rel="noreferrer" style={{ background: 'rgba(255,255,255,0.05)', color: '#9CA3AF', padding: '13px 28px', borderRadius: '8px', fontSize: '14px', fontWeight: '400', textDecoration: 'none', border: '0.5px solid rgba(255,255,255,0.35)' }}>
                 LinkedIn
               </a>
             </div>
