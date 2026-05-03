@@ -24,11 +24,11 @@ const Home = () => {
             </div>
             <div className="preview-strip">
               {[
-                { title: 'Vendor Performance Analytics', tag: 'Analytics', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #2e1b5e, #6D28D9)', bars: [60,85,45,90,55,75,40,95,65,80] },
-                { title: 'Sales Dashboard', tag: 'Analytics', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #2e1b5e, #6D28D9)', bars: [40,70,90,50,80,60,95,45,75,85] },
-                { title: 'Funnel Analysis', tag: 'SQL', color: '#10B981', gradient: 'linear-gradient(135deg, #0d3b2e, #065F46)', bars: [75,50,85,40,95,55,70,80,45,65] },
-                { title: 'Sentiment API', tag: 'ML', color: '#F59E0B', gradient: 'linear-gradient(135deg, #3b2a0d, #92400E)', bars: [55,80,40,75,90,50,65,85,45,70] },
-              ].map((item, i) => (
+              { title: 'Vendor Performance Analytics', tag: 'Analytics', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #2e1b5e, #6D28D9)', bars: [60,85,45,90,55,75,40,95,65,80] },
+              { title: 'E-commerce Business Analytics', tag: 'SQL', color: '#10B981', gradient: 'linear-gradient(135deg, #0d3b2e, #065F46)', bars: [40,70,90,50,80,60,95,45,75,85] },
+              { title: 'Sales Performance Dashboard', tag: 'Analytics', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #2e1b5e, #6D28D9)', bars: [75,50,85,40,95,55,70,80,45,65] },
+              { title: 'Sentiment Analysis API', tag: 'ML', color: '#F59E0B', gradient: 'linear-gradient(135deg, #3b2a0d, #92400E)', bars: [55,80,40,75,90,50,65,85,45,70] },
+            ].map((item, i) => (
                 <div key={i}
                   style={{ background: item.gradient, border: `0.5px solid ${item.color}33`, borderRadius: '16px', overflow: 'hidden', position: 'relative', aspectRatio: '16/10', cursor: 'pointer', transition: 'transform 0.2s, border-color 0.2s' }}
                   onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = item.color + '66' }}

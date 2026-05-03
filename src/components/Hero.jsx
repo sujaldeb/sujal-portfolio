@@ -65,9 +65,9 @@ const skillCategories = [
 ]
 
 const impactCards = [
-  { metric: '94%', desc: 'Accuracy in Customer Churn Prediction model', color: '#3B82F6', bg: 'rgba(59,130,246,0.08)', border: 'rgba(59,130,246,0.2)', projectId: 'project-1' },
-  { metric: '8 hrs', desc: 'Saved weekly via automated Power BI reporting', color: '#8B5CF6', bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.2)', projectId: 'project-2' },
-  { metric: '+23%', desc: 'Conversion lift from SQL Funnel Analysis', color: '#10B981', bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.2)', projectId: 'project-3' },
+  { metric: '80%', desc: 'Revenue from Top 17 Vendors — Vendor Analytics', color: '#3B82F6', bg: 'rgba(59,130,246,0.08)', border: 'rgba(59,130,246,0.2)', projectId: 'vendor-performance' },
+  { metric: '8 hrs', desc: 'Saved weekly via automated Power BI reporting', color: '#8B5CF6', bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.2)', projectId: 'project-3' },
+  { metric: '97%', desc: 'Customers never return — E-commerce Analytics', color: '#10B981', bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.2)', projectId: 'ecommerce-analytics' },
   { metric: '89%', desc: 'F1 Score on Sentiment Analysis NLP model', color: '#F59E0B', bg: 'rgba(245,158,11,0.08)', border: 'rgba(245,158,11,0.2)', projectId: 'project-4' },
 ]
 
