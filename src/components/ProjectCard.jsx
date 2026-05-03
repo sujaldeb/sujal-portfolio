@@ -6,6 +6,39 @@ const tagColors = {
   SQL:       { bg: 'rgba(16,185,129,0.15)', color: '#6EE7B7',  accent: '#10B981' },
 }
 
+const toolColors = {
+  'Python':           '#3B82F6',
+  'Pandas':           '#8B5CF6',
+  'NumPy':            '#06B6D4',
+  'SQLite':           '#10B981',
+  'Scikit-learn':     '#F59E0B',
+  'SciPy':            '#EF4444',
+  'Power BI':         '#F59E0B',
+  'SQL':              '#10B981',
+  'MySQL':            '#06B6D4',
+  'PostgreSQL':       '#3B82F6',
+  'CTEs':             '#8B5CF6',
+  'Window Functions': '#10B981',
+  'Excel':            '#22C55E',
+  'DAX':              '#F59E0B',
+  'Tableau':          '#06B6D4',
+  'HuggingFace':      '#F59E0B',
+  'Flask':            '#9CA3AF',
+  'BERT':             '#8B5CF6',
+  'Seaborn':          '#06B6D4',
+  'Matplotlib':       '#EF4444',
+  'PCA':              '#8B5CF6',
+  'K-Means':          '#3B82F6',
+  'Prophet':          '#10B981',
+  'ARIMA':            '#06B6D4',
+  'TF-IDF':           '#F59E0B',
+  'SVD':              '#8B5CF6',
+  'WHO Data':         '#22C55E',
+  'SQL Server':       '#EF4444',
+}
+
+const getToolColor = (tool) => toolColors[tool] || '#6B7280'
+
 const ProjectCard = ({ project }) => {
   const tag = tagColors[project.tag] || tagColors['ML']
 
@@ -15,7 +48,7 @@ const ProjectCard = ({ project }) => {
         background: 'rgba(255,255,255,0.03)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
-        border: '0.5px solid rgba(255,255,255,0.08)',
+        border: '0.5px solid rgba(255,255,255,0.07)',
         borderRadius: '16px',
         padding: '28px',
         cursor: 'pointer',
@@ -23,9 +56,10 @@ const ProjectCard = ({ project }) => {
         position: 'relative',
         overflow: 'hidden',
         height: '100%',
+        boxSizing: 'border-box',
       }}
         onMouseEnter={e => {
-          e.currentTarget.style.borderColor = 'rgba(59,130,246,0.4)'
+          e.currentTarget.style.borderColor = tag.accent + '60'
           e.currentTarget.style.transform = 'translateY(-3px)'
         }}
         onMouseLeave={e => {
@@ -41,10 +75,8 @@ const ProjectCard = ({ project }) => {
 
         {/* Tag */}
         <span style={{
-          display: 'inline-block',
-          padding: '3px 10px', borderRadius: '4px',
-          fontSize: '11px', fontWeight: '500',
-          letterSpacing: '0.3px', marginBottom: '16px',
+          display: 'inline-block', padding: '3px 10px', borderRadius: '4px',
+          fontSize: '11px', fontWeight: '500', letterSpacing: '0.3px', marginBottom: '16px',
           background: tag.bg, color: tag.color,
         }}>
           {project.tag}
@@ -52,29 +84,25 @@ const ProjectCard = ({ project }) => {
 
         {/* Title */}
         <h3 style={{
-          fontFamily: 'Outfit, sans-serif',
-          fontSize: '18px', fontWeight: '700',
-          color: '#F3F4F6', marginBottom: '10px',
-          letterSpacing: '-0.3px',
+          fontFamily: 'Outfit, sans-serif', fontSize: '18px', fontWeight: '700',
+          color: '#F3F4F6', marginBottom: '10px', letterSpacing: '-0.3px',
         }}>
           {project.title}
         </h3>
 
         {/* Description */}
         <p style={{
-          color: '#6B7280', fontSize: '13px',
-          lineHeight: '1.65', marginBottom: '24px',
-          fontWeight: '300',
+          color: '#9CA3AF', fontSize: '13px', lineHeight: '1.65',
+          marginBottom: '24px', fontWeight: '300',
         }}>
           {project.shortDesc}
         </p>
 
         {/* Footer */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
           <div>
             <div style={{
-              fontFamily: 'Outfit, sans-serif',
-              fontSize: '20px', fontWeight: '700',
+              fontFamily: 'Outfit, sans-serif', fontSize: '20px', fontWeight: '700',
               color: '#F9FAFB', letterSpacing: '-0.5px',
             }}>
               {project.metric}
@@ -86,25 +114,31 @@ const ProjectCard = ({ project }) => {
           <div style={{
             width: '32px', height: '32px',
             border: '0.5px solid rgba(255,255,255,0.1)',
-            borderRadius: '50%',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            color: '#6B7280', fontSize: '14px',
+            borderRadius: '50%', display: 'flex', alignItems: 'center',
+            justifyContent: 'center', color: '#6B7280', fontSize: '14px',
           }}>
             →
           </div>
         </div>
 
-        {/* Tools */}
-        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '16px', paddingTop: '16px', borderTop: '0.5px solid rgba(255,255,255,0.05)' }}>
-          {project.tools.map(tool => (
-            <span key={tool} style={{
-              fontSize: '11px', color: '#4B5563',
-              background: '#1F2937',
-              padding: '3px 8px', borderRadius: '4px',
-            }}>
-              {tool}
-            </span>
-          ))}
+        {/* Tools with colors */}
+        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', paddingTop: '14px', borderTop: '0.5px solid rgba(255,255,255,0.05)' }}>
+          {project.tools.map(tool => {
+            const color = getToolColor(tool)
+            return (
+              <span key={tool} style={{
+                fontSize: '11px',
+                color: color,
+                background: color + '15',
+                border: `0.5px solid ${color}40`,
+                padding: '3px 8px',
+                borderRadius: '4px',
+                fontWeight: '400',
+              }}>
+                {tool}
+              </span>
+            )
+          })}
         </div>
       </div>
     </Link>

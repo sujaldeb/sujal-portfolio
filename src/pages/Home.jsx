@@ -24,11 +24,11 @@ const Home = () => {
             </div>
             <div className="preview-strip">
               {[
-              { title: 'Vendor Performance Analytics', tag: 'Analytics', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #2e1b5e, #6D28D9)', bars: [60,85,45,90,55,75,40,95,65,80] },
-              { title: 'E-commerce Business Analytics', tag: 'SQL', color: '#10B981', gradient: 'linear-gradient(135deg, #0d3b2e, #065F46)', bars: [40,70,90,50,80,60,95,45,75,85] },
-              { title: 'Sales Performance Dashboard', tag: 'Analytics', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #2e1b5e, #6D28D9)', bars: [75,50,85,40,95,55,70,80,45,65] },
-              { title: 'Sentiment Analysis API', tag: 'ML', color: '#F59E0B', gradient: 'linear-gradient(135deg, #3b2a0d, #92400E)', bars: [55,80,40,75,90,50,65,85,45,70] },
-            ].map((item, i) => (
+                { title: 'Vendor Performance Analytics', tag: 'Analytics', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #2e1b5e, #6D28D9)', bars: [60,85,45,90,55,75,40,95,65,80] },
+                { title: 'E-commerce Business Analytics', tag: 'SQL', color: '#10B981', gradient: 'linear-gradient(135deg, #0d3b2e, #065F46)', bars: [40,70,90,50,80,60,95,45,75,85] },
+                { title: 'Sales Performance Dashboard', tag: 'Analytics', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #2e1b5e, #6D28D9)', bars: [75,50,85,40,95,55,70,80,45,65] },
+                { title: 'Sentiment Analysis API', tag: 'ML', color: '#F59E0B', gradient: 'linear-gradient(135deg, #3b2a0d, #92400E)', bars: [55,80,40,75,90,50,65,85,45,70] },
+              ].map((item, i) => (
                 <div key={i}
                   style={{ background: item.gradient, border: `0.5px solid ${item.color}33`, borderRadius: '16px', overflow: 'hidden', position: 'relative', aspectRatio: '16/10', cursor: 'pointer', transition: 'transform 0.2s, border-color 0.2s' }}
                   onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = item.color + '66' }}
@@ -89,13 +89,7 @@ const Home = () => {
               <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '36px', fontWeight: '700', color: '#F9FAFB', letterSpacing: '-0.8px', margin: 0 }}>
                 About Me
               </h2>
-
-              <div style={{
-                display: 'flex', alignItems: 'center', gap: '12px',
-                background: 'rgba(255,255,255,0.03)',
-                borderRadius: '100px', padding: '7px 20px 7px 7px',
-                boxShadow: '0 0 0 1px rgba(99,102,241,0.3), 0 0 12px rgba(59,130,246,0.08)',
-              }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', background: 'rgba(255,255,255,0.03)', borderRadius: '100px', padding: '7px 20px 7px 7px', boxShadow: '0 0 0 1px rgba(99,102,241,0.3), 0 0 12px rgba(59,130,246,0.08)' }}>
                 <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #1D4ED8, #3B82F6)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontSize: '13px', fontWeight: '800', color: '#fff', flexShrink: 0 }}>
                   SD
                 </div>
@@ -114,8 +108,6 @@ const Home = () => {
             {/* Main Glass Card */}
             <div style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '20px', overflow: 'hidden', borderLeft: '3px solid #3B82F6' }}>
               <div className="about-card-grid">
-
-                {/* Left — Bio */}
                 <div style={{ padding: '32px', borderRight: '0.5px solid rgba(255,255,255,0.06)' }}>
                   <div style={{ fontSize: '10px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '16px' }}>
                     Who I Am
@@ -130,8 +122,6 @@ const Home = () => {
                     I care deeply about building things that are not just accurate but also explainable, scalable, and useful to the people who rely on them.
                   </p>
                 </div>
-
-                {/* Right — Bullets */}
                 <div style={{ padding: '32px' }}>
                   <div style={{ fontSize: '10px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '16px' }}>
                     What I Do
@@ -155,7 +145,6 @@ const Home = () => {
                     ))}
                   </div>
                 </div>
-
               </div>
             </div>
 
@@ -166,18 +155,18 @@ const Home = () => {
               </div>
               <div className="competencies-grid">
                 {[
-                  { name: 'Data Pipelines', color: '#3B82F6' },
-                  { name: 'Predictive Modeling', color: '#8B5CF6' },
-                  { name: 'Business Analytics', color: '#10B981' },
-                  { name: 'Dashboard Design', color: '#06B6D4' },
-                  { name: 'Statistical Analysis', color: '#F59E0B' },
-                  { name: 'Team Player', color: '#3B82F6' },
-                  { name: 'Communication', color: '#8B5CF6' },
-                  { name: 'Problem Solving', color: '#10B981' },
-                  { name: 'Attention to Detail', color: '#06B6D4' },
-                  { name: 'Data Storytelling', color: '#F59E0B' },
+                  { name: 'ETL Architecture', color: '#3B82F6' },
+                  { name: 'Leakage Detection', color: '#8B5CF6' },
+                  { name: 'Hypothesis Testing', color: '#10B981' },
+                  { name: 'Pareto Analysis', color: '#06B6D4' },
+                  { name: 'AI-augmented Workflows', color: '#F59E0B' },
+                  { name: 'Query Optimization', color: '#3B82F6' },
+                  { name: 'Stakeholder Narratives', color: '#8B5CF6' },
+                  { name: 'Retention & LTV Analysis', color: '#10B981' },
+                  { name: 'Inventory Risk Modeling', color: '#06B6D4' },
+                  { name: 'KPI Ownership', color: '#F59E0B' },
                 ].map(c => (
-                  <div key={c.name} style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '10px', padding: '12px 14px', fontSize: '12px', color: '#C9D1D9', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textAlign: 'center' }}>
+                  <div key={c.name} style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', border: `0.5px solid ${c.color}30`, borderRadius: '10px', padding: '12px 14px', fontSize: '12px', color: '#E5E7EB', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textAlign: 'center' }}>
                     <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: c.color, flexShrink: 0 }} />
                     {c.name}
                   </div>
@@ -213,9 +202,7 @@ const Home = () => {
           .preview-strip { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
           .about-card-grid { display: grid; grid-template-columns: 1fr 1fr; }
           .competencies-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 10px; }
-          @media (max-width: 1024px) {
-            .competencies-grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
-          }
+          @media (max-width: 1024px) { .competencies-grid { grid-template-columns: 1fr 1fr 1fr 1fr; } }
           @media (max-width: 768px) {
             .projects-grid { grid-template-columns: 1fr; }
             .preview-strip { grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -223,9 +210,7 @@ const Home = () => {
             .about-card-grid > div:first-child { border-right: none !important; border-bottom: 0.5px solid rgba(255,255,255,0.06); }
             .competencies-grid { grid-template-columns: 1fr 1fr 1fr; }
           }
-          @media (max-width: 480px) {
-            .competencies-grid { grid-template-columns: 1fr 1fr; }
-          }
+          @media (max-width: 480px) { .competencies-grid { grid-template-columns: 1fr 1fr; } }
         `}</style>
 
         <Footer />
