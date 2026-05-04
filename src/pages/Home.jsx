@@ -26,8 +26,8 @@ const Home = () => {
               {[
                 { title: 'Vendor Performance Analytics', tag: 'Analytics', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #2e1b5e, #6D28D9)', bars: [60,85,45,90,55,75,40,95,65,80] },
                 { title: 'E-commerce Business Analytics', tag: 'SQL', color: '#10B981', gradient: 'linear-gradient(135deg, #0d3b2e, #065F46)', bars: [40,70,90,50,80,60,95,45,75,85] },
-                { title: 'Sales Performance Dashboard', tag: 'Analytics', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #2e1b5e, #6D28D9)', bars: [75,50,85,40,95,55,70,80,45,65] },
-                { title: 'Sentiment Analysis API', tag: 'ML', color: '#F59E0B', gradient: 'linear-gradient(135deg, #3b2a0d, #92400E)', bars: [55,80,40,75,90,50,65,85,45,70] },
+                { title: 'Used Car Pricing Intelligence', tag: 'ML', color: '#3B82F6', gradient: 'linear-gradient(135deg, #1e3a5f, #1D4ED8)', bars: [75,50,85,40,95,55,70,80,45,65] },
+                { title: 'Sales Performance Dashboard', tag: 'Analytics', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #2e1b5e, #6D28D9)', bars: [55,80,40,75,90,50,65,85,45,70] },
               ].map((item, i) => (
                 <div key={i}
                   style={{ background: item.gradient, border: `0.5px solid ${item.color}33`, borderRadius: '16px', overflow: 'hidden', position: 'relative', aspectRatio: '16/10', cursor: 'pointer', transition: 'transform 0.2s, border-color 0.2s' }}
@@ -84,7 +84,6 @@ const Home = () => {
               Background
             </div>
 
-            {/* Heading + Identity Pill */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px', marginBottom: '32px' }}>
               <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: '36px', fontWeight: '700', color: '#F9FAFB', letterSpacing: '-0.8px', margin: 0 }}>
                 About Me
@@ -105,7 +104,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Main Glass Card */}
             <div style={{ background: 'rgba(255,255,255,0.03)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '0.5px solid rgba(255,255,255,0.08)', borderRadius: '20px', overflow: 'hidden', borderLeft: '3px solid #3B82F6' }}>
               <div className="about-card-grid">
                 <div style={{ padding: '32px', borderRight: '0.5px solid rgba(255,255,255,0.06)' }}>
@@ -148,7 +146,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Competencies */}
             <div style={{ marginTop: '48px', paddingTop: '40px', borderTop: '0.5px solid rgba(255,255,255,0.06)' }}>
               <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '20px' }}>
                 Core Competencies
