@@ -67,8 +67,8 @@ const skillCategories = [
 const impactCards = [
   { metric: '80%', desc: 'Revenue from Top 17 Vendors — Vendor Analytics', color: '#3B82F6', bg: 'rgba(59,130,246,0.08)', border: 'rgba(59,130,246,0.2)', projectId: 'vendor-performance' },
   { metric: '97%', desc: 'Customers never return — E-commerce Analytics', color: '#8B5CF6', bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.2)', projectId: 'ecommerce-analytics' },
-  { metric: '86.8%', desc: 'Model accuracy on Used Car Pricing System', color: '#10B981', bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.2)', projectId: 'used-car-pricing' },
-  { metric: '8 hrs', desc: 'Saved weekly via automated Power BI reporting', color: '#F59E0B', bg: 'rgba(245,158,11,0.08)', border: 'rgba(245,158,11,0.2)', projectId: 'project-4' },
+  { metric: '86.8%', desc: 'R² accuracy — Used Car Pricing System', color: '#10B981', bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.2)', projectId: 'used-car-pricing' },
+  { metric: '77.4%', desc: 'ROC-AUC — Credit Risk Prediction System', color: '#F59E0B', bg: 'rgba(245,158,11,0.08)', border: 'rgba(245,158,11,0.2)', projectId: 'credit-risk' },
 ]
 
 const getSkillGrid = (label, count) => {
@@ -85,13 +85,12 @@ const Hero = () => {
   return (
     <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '70px 20px 60px' }}>
 
-      {/* Top Hero Grid */}
       <div className="hero-grid">
 
         {/* Left */}
         <div className="hero-left">
-         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(34,197,94,0.1)', border: '0.5px solid rgba(34,197,94,0.3)', color: '#86EFAC', padding: '5px 14px', borderRadius: '100px', fontSize: '12px', marginBottom: '24px' }}>
-  <span style={{ width: '6px', height: '6px', background: '#22C55E', borderRadius: '50%' }} />
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(34,197,94,0.1)', border: '0.5px solid rgba(34,197,94,0.3)', color: '#86EFAC', padding: '5px 14px', borderRadius: '100px', fontSize: '12px', marginBottom: '24px' }}>
+            <span style={{ width: '6px', height: '6px', background: '#22C55E', borderRadius: '50%' }} />
             Open to opportunities
           </div>
 
@@ -112,7 +111,7 @@ const Hero = () => {
 
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             <Link to="/projects" style={{ background: '#3B82F6', color: '#fff', padding: '12px 24px', borderRadius: '8px', fontSize: '14px', fontWeight: '500', textDecoration: 'none' }}>
-              View Projects →
+              View Projects  →
             </Link>
             <a href="mailto:sujaldeb1@gmail.com" style={{ background: 'transparent', color: '#9CA3AF', padding: '12px 24px', borderRadius: '8px', fontSize: '14px', textDecoration: 'none', border: '0.5px solid rgba(255,255,255,0.35)' }}>
               Let's Talk
@@ -128,7 +127,6 @@ const Hero = () => {
               Tech Stack
             </div>
 
-            {/* Tabs */}
             <div style={{ display: 'flex', gap: '5px', marginBottom: '18px', flexWrap: 'wrap' }}>
               {skillCategories.map((cat, i) => (
                 <button key={cat.label} onClick={() => setActiveTab(i)} style={{
@@ -145,7 +143,6 @@ const Hero = () => {
               ))}
             </div>
 
-            {/* Skill Cards */}
             <div style={{ display: 'grid', gridTemplateColumns: getSkillGrid(active.label, active.skills.length), gap: '10px' }}>
               {active.skills.map(skill => (
                 <div key={skill.name} style={{
@@ -153,8 +150,7 @@ const Hero = () => {
                   border: '0.5px solid rgba(255,255,255,0.07)',
                   borderRadius: '10px', padding: '12px',
                   display: 'flex', alignItems: 'center', gap: '8px',
-                  transition: 'border-color 0.2s',
-                  minWidth: 0,
+                  transition: 'border-color 0.2s', minWidth: 0,
                 }}
                   onMouseEnter={e => e.currentTarget.style.borderColor = active.border}
                   onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'}
@@ -170,7 +166,6 @@ const Hero = () => {
               ))}
             </div>
 
-            {/* Footer */}
             <div style={{ marginTop: '16px', paddingTop: '14px', borderTop: '0.5px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', gap: '6px' }}>
               <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: active.color }} />
               <span style={{ fontSize: '11px', color: '#9CA3AF', fontWeight: '300' }}>
@@ -259,18 +254,10 @@ const Hero = () => {
             grid-template-columns: 1fr 1fr;
             gap: 10px;
           }
-          .impact-strip > a {
-            flex: unset;
-          }
-          .impact-strip > a > div {
-            padding: 16px 10px;
-          }
-          .impact-strip > a > div > div:first-child {
-            font-size: 18px;
-          }
-          .impact-strip > a > div > div:last-child {
-            font-size: 10px;
-          }
+          .impact-strip > a { flex: unset; }
+          .impact-strip > a > div { padding: 16px 10px; }
+          .impact-strip > a > div > div:first-child { font-size: 18px; }
+          .impact-strip > a > div > div:last-child { font-size: 10px; }
         }
       `}</style>
     </section>
