@@ -50,9 +50,16 @@ const toolColors = {
   'Git LFS':                '#F59E0B',
   'SHAP':                   '#22C55E',
   'Isolation Forest':       '#8B5CF6',
-  'Statsmodels':            '#06B6D4',
   'Logistic Regression':    '#06B6D4',
   'Random Forest':          '#22C55E',
+  'FastAPI':                '#06B6D4',
+  'Google BigQuery':        '#3B82F6',
+  'Sentence Transformers':  '#8B5CF6',
+  'PyTorch':                '#EF4444',
+  'pdfplumber':             '#F59E0B',
+  'python-docx':            '#3B82F6',
+  'Google Gemini API':      '#10B981',
+  'ESCO Skills':            '#06B6D4',
 }
 
 const getToolColor = (tool) => toolColors[tool] || '#6B7280'
