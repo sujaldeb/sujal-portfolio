@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import ChallengeCard from '../components/ChallengeCard'
 import { projects } from '../data/projects'
 
 const tagColors = {
@@ -52,6 +53,7 @@ const ProjectDetail = () => {
 
   const tag = tagColors[project.tag] || tagColors['ML']
   const images = placeholderImages(tag.accent)
+  const hasChallenges = project.challenges && project.challenges.length > 0
 
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh', position: 'relative' }}>
@@ -84,7 +86,7 @@ const ProjectDetail = () => {
           {project.shortDesc}
         </p>
 
-        {/* Metric + Image Cards */}
+        {/* Metric + Image/Challenge Cards */}
         <div className="detail-cards-grid" style={{ marginBottom: '48px' }}>
 
           {/* Metric Card */}
@@ -142,65 +144,69 @@ const ProjectDetail = () => {
             )}
           </div>
 
-          {/* Image Card */}
-          <div style={{
-            background: 'rgba(255,255,255,0.03)',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
-            border: `0.5px solid ${tag.accent}33`,
-            borderRadius: '16px',
-            overflow: 'hidden',
-            display: 'flex',
-            flexDirection: 'column',
-            borderTop: `2px solid ${tag.accent}`,
-            height: '100%',
-          }}>
-            <div
-              onClick={() => setLightbox(true)}
-              style={{
-                flex: 1,
-                background: images[activeImage].bg,
-                position: 'relative',
-                cursor: 'zoom-in',
-                minHeight: '180px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundImage: `linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)`,
-                backgroundSize: '20px 20px',
-              }}
-            >
-              <div style={{ position: 'absolute', bottom: '28px', left: '20px', right: '20px', display: 'flex', alignItems: 'flex-end', gap: '4px', height: '80px' }}>
-                {[65,45,80,55,90,40,75,60,85,50,70,95].map((h, j) => (
-                  <div key={j} style={{ flex: 1, height: `${h}%`, background: tag.accent + '50', borderRadius: '2px 2px 0 0' }} />
-                ))}
+          {/* Challenge Card (if project has challenges) OR Image Card (fallback) */}
+          {hasChallenges ? (
+            <ChallengeCard challenges={project.challenges} accent={tag.accent} />
+          ) : (
+            <div style={{
+              background: 'rgba(255,255,255,0.03)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              border: `0.5px solid ${tag.accent}33`,
+              borderRadius: '16px',
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              borderTop: `2px solid ${tag.accent}`,
+              height: '100%',
+            }}>
+              <div
+                onClick={() => setLightbox(true)}
+                style={{
+                  flex: 1,
+                  background: images[activeImage].bg,
+                  position: 'relative',
+                  cursor: 'zoom-in',
+                  minHeight: '180px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundImage: `linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)`,
+                  backgroundSize: '20px 20px',
+                }}
+              >
+                <div style={{ position: 'absolute', bottom: '28px', left: '20px', right: '20px', display: 'flex', alignItems: 'flex-end', gap: '4px', height: '80px' }}>
+                  {[65,45,80,55,90,40,75,60,85,50,70,95].map((h, j) => (
+                    <div key={j} style={{ flex: 1, height: `${h}%`, background: tag.accent + '50', borderRadius: '2px 2px 0 0' }} />
+                  ))}
+                </div>
+                <div style={{ position: 'absolute', top: '12px', left: '12px', background: tag.accent + '25', border: `0.5px solid ${tag.accent}40`, padding: '2px 8px', borderRadius: '4px', fontSize: '10px', color: tag.color, fontWeight: '500', letterSpacing: '0.5px' }}>
+                  {images[activeImage].label} · {activeImage + 1}/{images.length}
+                </div>
+                <div style={{ position: 'absolute', bottom: '10px', right: '10px', background: 'rgba(0,0,0,0.5)', padding: '3px 7px', borderRadius: '5px', fontSize: '9px', color: '#6B7280' }}>
+                  click to enlarge
+                </div>
+                {activeImage > 0 && (
+                  <button onClick={e => { e.stopPropagation(); setActiveImage(activeImage - 1) }} style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', width: '26px', height: '26px', borderRadius: '50%', cursor: 'pointer', fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    ‹
+                  </button>
+                )}
+                {activeImage < images.length - 1 && (
+                  <button onClick={e => { e.stopPropagation(); setActiveImage(activeImage + 1) }} style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', width: '26px', height: '26px', borderRadius: '50%', cursor: 'pointer', fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    ›
+                  </button>
+                )}
               </div>
-              <div style={{ position: 'absolute', top: '12px', left: '12px', background: tag.accent + '25', border: `0.5px solid ${tag.accent}40`, padding: '2px 8px', borderRadius: '4px', fontSize: '10px', color: tag.color, fontWeight: '500', letterSpacing: '0.5px' }}>
-                {images[activeImage].label} · {activeImage + 1}/{images.length}
+              <div style={{ padding: '12px 16px', borderTop: `0.5px solid ${tag.accent}20`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
+                <div style={{ display: 'flex', gap: '5px' }}>
+                  {images.map((_, i) => (
+                    <button key={i} onClick={() => setActiveImage(i)} style={{ width: activeImage === i ? '18px' : '6px', height: '6px', borderRadius: '3px', background: activeImage === i ? tag.accent : tag.accent + '40', border: 'none', cursor: 'pointer', transition: 'all 0.2s', padding: 0 }} />
+                  ))}
+                </div>
+                <span style={{ fontSize: '10px', color: '#4B5563' }}>{images[activeImage].label}</span>
               </div>
-              <div style={{ position: 'absolute', bottom: '10px', right: '10px', background: 'rgba(0,0,0,0.5)', padding: '3px 7px', borderRadius: '5px', fontSize: '9px', color: '#6B7280' }}>
-                click to enlarge
-              </div>
-              {activeImage > 0 && (
-                <button onClick={e => { e.stopPropagation(); setActiveImage(activeImage - 1) }} style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', width: '26px', height: '26px', borderRadius: '50%', cursor: 'pointer', fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  ‹
-                </button>
-              )}
-              {activeImage < images.length - 1 && (
-                <button onClick={e => { e.stopPropagation(); setActiveImage(activeImage + 1) }} style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(0,0,0,0.5)', border: 'none', color: '#fff', width: '26px', height: '26px', borderRadius: '50%', cursor: 'pointer', fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  ›
-                </button>
-              )}
             </div>
-            <div style={{ padding: '12px 16px', borderTop: `0.5px solid ${tag.accent}20`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
-              <div style={{ display: 'flex', gap: '5px' }}>
-                {images.map((_, i) => (
-                  <button key={i} onClick={() => setActiveImage(i)} style={{ width: activeImage === i ? '18px' : '6px', height: '6px', borderRadius: '3px', background: activeImage === i ? tag.accent : tag.accent + '40', border: 'none', cursor: 'pointer', transition: 'all 0.2s', padding: 0 }} />
-                ))}
-              </div>
-              <span style={{ fontSize: '10px', color: '#4B5563' }}>{images[activeImage].label}</span>
-            </div>
-          </div>
+          )}
         </div>
 
         {/* Case Study Sections */}
@@ -253,8 +259,8 @@ const ProjectDetail = () => {
 
       </div>
 
-      {/* Lightbox */}
-      {lightbox && (
+      {/* Lightbox — only for placeholder image carousel */}
+      {lightbox && !hasChallenges && (
         <div onClick={() => setLightbox(false)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
           <div style={{ width: '100%', maxWidth: '700px', aspectRatio: '16/10', background: images[activeImage].bg, borderRadius: '16px', border: `0.5px solid ${tag.accent}40`, position: 'relative' }}>
             <div style={{ position: 'absolute', bottom: '40px', left: '28px', right: '28px', display: 'flex', alignItems: 'flex-end', gap: '6px', height: '100px' }}>
