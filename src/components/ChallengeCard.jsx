@@ -2,6 +2,12 @@ import { useState, useEffect, useRef } from 'react'
 
 const AUTO_ADVANCE_MS = 6000
 
+const splitLead = (text) => {
+  const match = text.match(/^(.*?[.!?])\s(.*)$/s)
+  if (!match) return { lead: text, rest: '' }
+  return { lead: match[1], rest: match[2] }
+}
+
 const ChallengeCard = ({ challenges, accent }) => {
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
@@ -16,6 +22,7 @@ const ChallengeCard = ({ challenges, accent }) => {
   }, [paused, challenges.length])
 
   const current = challenges[active]
+  const fixSplit = splitLead(current.fix)
 
   return (
     <div
@@ -31,10 +38,11 @@ const ChallengeCard = ({ challenges, accent }) => {
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
+        minHeight: '480px',
         height: '100%',
       }}
     >
-      <div style={{ padding: '20px 22px 0' }}>
+      <div style={{ padding: '22px 24px 0' }}>
         <span style={{
           display: 'inline-block', background: accent + '25', color: accent,
           fontSize: '10px', fontWeight: '500', letterSpacing: '0.5px',
@@ -44,35 +52,35 @@ const ChallengeCard = ({ challenges, accent }) => {
         </span>
       </div>
 
-      <div style={{ padding: '18px 22px 8px', flex: 1 }}>
-        <div style={{ fontSize: '10px', letterSpacing: '2px', color: accent, textTransform: 'uppercase', fontWeight: '500', marginBottom: '8px' }}>
+      <div style={{ padding: '20px 24px 0', flex: 1 }}>
+        <div style={{ fontSize: '10px', letterSpacing: '2px', color: accent, textTransform: 'uppercase', fontWeight: '500', marginBottom: '10px' }}>
           The problem
         </div>
-        <p style={{ color: '#F3F4F6', fontSize: '14px', lineHeight: '1.6', fontWeight: '400', margin: '0 0 18px' }}>
+        <p style={{ color: '#F3F4F6', fontSize: '14px', lineHeight: '1.7', fontWeight: '400', margin: '0 0 28px' }}>
           {current.problem}
         </p>
 
-        <div style={{ fontSize: '10px', letterSpacing: '2px', color: accent, textTransform: 'uppercase', fontWeight: '500', marginBottom: '8px' }}>
+        <div style={{ fontSize: '10px', letterSpacing: '2px', color: accent, textTransform: 'uppercase', fontWeight: '500', marginBottom: '10px' }}>
           The fix
         </div>
-        <p style={{ color: '#C9D1D9', fontSize: '13.5px', lineHeight: '1.7', fontWeight: '300', margin: 0 }}>
-          {current.fix}
+        <p style={{ color: '#C9D1D9', fontSize: '13.5px', lineHeight: '1.75', fontWeight: '300', margin: 0 }}>
+          <span style={{ color: '#E5E7EB', fontWeight: '500' }}>{fixSplit.lead}</span>
+          {fixSplit.rest && ' ' + fixSplit.rest}
         </p>
       </div>
 
       <div style={{
-        margin: '0 22px 20px', padding: '14px 16px',
+        margin: '20px 24px 24px', padding: '14px 16px',
         background: accent + '15', border: `0.5px solid ${accent}30`,
-        borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        gap: '12px',
+        borderRadius: '10px', display: 'flex', flexDirection: 'column', gap: '4px',
       }}>
-        <span style={{ fontSize: '11px', color: '#9CA3AF', fontWeight: '300', flexShrink: 0 }}>Result</span>
-        <span style={{ fontFamily: 'Outfit, sans-serif', fontSize: '13px', fontWeight: '700', color: accent, textAlign: 'right' }}>
+        <span style={{ fontSize: '10px', letterSpacing: '1px', color: '#9CA3AF', fontWeight: '500', textTransform: 'uppercase' }}>Result</span>
+        <span style={{ fontFamily: 'Outfit, sans-serif', fontSize: '14px', fontWeight: '700', color: accent, lineHeight: '1.4' }}>
           {current.result}
         </span>
       </div>
 
-      <div style={{ padding: '0 22px 18px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+      <div style={{ padding: '0 24px 20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
         {challenges.map((_, i) => (
           <button
             key={i}
