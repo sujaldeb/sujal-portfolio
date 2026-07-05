@@ -35,6 +35,28 @@ export const projects = [
     github: "https://github.com/sujaldeb/vendor-analysis-end-to-end",
     live: "",
     images: [],
+    challenges: [
+      {
+        problem: "The first model hit 100% accuracy. That's not a good sign — it's a red flag.",
+        fix: "Traced it back to the target variable. GrossProfit was both defining \"underperforming\" and sitting in the feature set — the model was reading the answer, not predicting it. Removed it and every directly-derived feature, retrained on causally valid ones like stock turnover and sales velocity.",
+        result: "98% accuracy · 0.987 ROC-AUC · 94% recall",
+      },
+      {
+        problem: "Freight costs looked fine at a glance but were quietly wrong. Each vendor's full freight cost was being applied to every product row under that vendor — not split. A vendor with $10,000 in freight and 40 products meant 40 rows each carrying the full $10,000.",
+        fix: "Applied the standard supply-chain approach — allocate freight proportionally, based on each product's share of that vendor's total purchase value.",
+        result: "Corrected margins across every vendor comparison",
+      },
+      {
+        problem: "A core query joining 15M rows took 60 seconds per run — slow enough to lose track of what was even being tested.",
+        fix: "Added indexes on the two columns used in every JOIN and WHERE clause, so the database could jump straight to matching rows instead of scanning both tables in full each time.",
+        result: "60s → 31s (48% faster)",
+      },
+      {
+        problem: "A 1.4GB file crashed on load. The obvious move — a bigger machine — isn't how this is handled in production.",
+        fix: "Switched to chunked ingestion, reading 100K rows at a time so only one batch sits in memory at once.",
+        result: "15M rows in 3m 46s · ~90% less peak memory",
+      },
+    ],
   },
   {
     id: "ecommerce-analytics",
