@@ -2,6 +2,7 @@ import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import ProjectCard from '../components/ProjectCard'
 import Footer from '../components/Footer'
+import InsightsSection from '../components/InsightsSection'
 import { projects } from '../data/projects'
 import { Link } from 'react-router-dom'
 
@@ -16,43 +17,10 @@ const Home = () => {
         <Navbar />
         <Hero />
 
-        {/* Project Preview Strip + Featured Projects */}
+        {/* Insights Strip + Featured Projects */}
         <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '80px 20px' }}>
           <div style={{ marginBottom: '64px' }}>
-            <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#3B82F6', textTransform: 'uppercase', fontWeight: '500', marginBottom: '20px' }}>
-              Project Previews
-            </div>
-            <div className="preview-strip">
-              {[
-                { title: 'Vendor Performance Analytics', tag: 'Analytics', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #2e1b5e, #6D28D9)', bars: [60,85,45,90,55,75,40,95,65,80] },
-                { title: 'E-commerce Business Analytics', tag: 'SQL', color: '#10B981', gradient: 'linear-gradient(135deg, #0d3b2e, #065F46)', bars: [40,70,90,50,80,60,95,45,75,85] },
-                { title: 'Used Car Pricing Intelligence', tag: 'ML', color: '#3B82F6', gradient: 'linear-gradient(135deg, #1e3a5f, #1D4ED8)', bars: [75,50,85,40,95,55,70,80,45,65] },
-                { title: 'Sales Performance Dashboard', tag: 'Analytics', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #2e1b5e, #6D28D9)', bars: [55,80,40,75,90,50,65,85,45,70] },
-              ].map((item, i) => (
-                <div key={i}
-                  style={{ background: item.gradient, border: `0.5px solid ${item.color}33`, borderRadius: '16px', overflow: 'hidden', position: 'relative', aspectRatio: '16/10', cursor: 'pointer', transition: 'transform 0.2s, border-color 0.2s' }}
-                  onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = item.color + '66' }}
-                  onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = item.color + '33' }}
-                >
-                  <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`, backgroundSize: '20px 20px' }} />
-                  <div style={{ position: 'absolute', bottom: '32px', left: '16px', right: '16px', display: 'flex', alignItems: 'flex-end', gap: '4px', height: '50px' }}>
-                    {item.bars.map((h, j) => (
-                      <div key={j} style={{ flex: 1, height: `${h}%`, background: item.color + '70', borderRadius: '2px 2px 0 0' }} />
-                    ))}
-                  </div>
-                  <div style={{ position: 'absolute', top: '14px', left: '14px' }}>
-                    <span style={{ fontSize: '10px', fontWeight: '600', color: item.color, background: item.color + '25', padding: '3px 8px', borderRadius: '4px', letterSpacing: '0.5px' }}>
-                      {item.tag}
-                    </span>
-                  </div>
-                  <div style={{ position: 'absolute', bottom: '10px', left: '14px', right: '14px' }}>
-                    <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)', fontWeight: '400', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      {item.title}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <InsightsSection />
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}>
@@ -196,13 +164,11 @@ const Home = () => {
 
         <style>{`
           .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-          .preview-strip { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
           .about-card-grid { display: grid; grid-template-columns: 1fr 1fr; }
           .competencies-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 10px; }
           @media (max-width: 1024px) { .competencies-grid { grid-template-columns: 1fr 1fr 1fr 1fr; } }
           @media (max-width: 768px) {
             .projects-grid { grid-template-columns: 1fr; }
-            .preview-strip { grid-template-columns: 1fr 1fr; gap: 12px; }
             .about-card-grid { grid-template-columns: 1fr; }
             .about-card-grid > div:first-child { border-right: none !important; border-bottom: 0.5px solid rgba(255,255,255,0.06); }
             .competencies-grid { grid-template-columns: 1fr 1fr 1fr; }
