@@ -37,14 +37,9 @@ export const projects = [
     images: [],
     challenges: [
       {
-        problem: "The first model hit 100% accuracy. That's not a good sign — it's a red flag.",
-        fix: "Traced it back to the target variable. GrossProfit was both defining \"underperforming\" and sitting in the feature set — the model was reading the answer, not predicting it. Removed it and every directly-derived feature, retrained on causally valid ones like stock turnover and sales velocity.",
-        result: "98% accuracy · 0.987 ROC-AUC · 94% recall",
-      },
-      {
-        problem: "Freight costs looked fine at a glance but were quietly wrong. Each vendor's full freight cost was being applied to every product row under that vendor — not split. A vendor with $10,000 in freight and 40 products meant 40 rows each carrying the full $10,000.",
-        fix: "Applied the standard supply-chain approach — allocate freight proportionally, based on each product's share of that vendor's total purchase value.",
-        result: "Corrected margins across every vendor comparison",
+        problem: "A 1.4GB file crashed on load. The obvious move — a bigger machine — isn't how this is handled in production.",
+        fix: "Switched to chunked ingestion, reading 100K rows at a time so only one batch sits in memory at once.",
+        result: "15M rows in 3m 46s · ~90% less peak memory",
       },
       {
         problem: "A core query joining 15M rows took 60 seconds per run — slow enough to lose track of what was even being tested.",
@@ -52,9 +47,14 @@ export const projects = [
         result: "60s → 31s (48% faster)",
       },
       {
-        problem: "A 1.4GB file crashed on load. The obvious move — a bigger machine — isn't how this is handled in production.",
-        fix: "Switched to chunked ingestion, reading 100K rows at a time so only one batch sits in memory at once.",
-        result: "15M rows in 3m 46s · ~90% less peak memory",
+        problem: "Freight costs looked fine at a glance but were quietly wrong. Each vendor's full freight cost was being applied to every product row under that vendor — not split. A vendor with $10,000 in freight and 40 products meant 40 rows each carrying the full $10,000.",
+        fix: "Applied the standard supply-chain approach — allocate freight proportionally, based on each product's share of that vendor's total purchase value.",
+        result: "Corrected margins across every vendor comparison",
+      },
+      {
+        problem: "The first model hit 100% accuracy. That's not a good sign — it's a red flag.",
+        fix: "Traced it back to the target variable. GrossProfit was both defining \"underperforming\" and sitting in the feature set — the model was reading the answer, not predicting it. Removed it and every directly-derived feature, retrained on causally valid ones like stock turnover and sales velocity.",
+        result: "98% accuracy · 0.987 ROC-AUC · 94% recall",
       },
     ],
   },
@@ -94,6 +94,28 @@ export const projects = [
     github: "https://github.com/sujaldeb/E-commerce-Business-Analytics-System",
     live: "",
     images: [],
+    challenges: [
+      {
+        problem: "There was no field for whether a delivery was early or late — it simply didn't exist in the raw tables. Without it, every downstream delivery analysis was impossible.",
+        fix: "Engineered a delivery_status column by comparing actual delivery dates against estimated delivery dates across the order data.",
+        result: "Unlocked all delivery-performance analysis for the rest of the project",
+      },
+      {
+        problem: "The obvious assumption — late delivery causes bad reviews — didn't hold. 5,855 one-star reviews came from orders that were delivered early, and one seller who delivered 9.6 days ahead of schedule still received a 67.86% one-star rate.",
+        fix: "Investigated further instead of accepting the logistics explanation. 51% of all 1-star reviews turned out to have nothing to do with delivery timing at all.",
+        result: "Disproved the assumed link between delivery speed and satisfaction",
+      },
+      {
+        problem: "5-star reviewers should be the most loyal customers. Instead, they returned at only 2.48% — barely different from everyone else.",
+        fix: "Traced the real cause to product mix — most categories on the platform are one-time purchases by nature, so satisfaction was never going to drive repeat orders.",
+        result: "97% of customers never return, regardless of review score",
+      },
+      {
+        problem: "550 of 3,095 sellers generate 80% of total revenue. The obvious hypothesis is that top sellers are faster or better reviewed than everyone else.",
+        fix: "Compared top and bottom sellers directly — top sellers charge R$264 on average versus R$41 for bottom sellers, with no meaningful gap in speed or review quality.",
+        result: "Price, not service quality, drives seller revenue concentration",
+      },
+    ],
   },
   {
     id: "used-car-pricing",
@@ -296,6 +318,28 @@ export const projects = [
     github: "https://github.com/sujaldeb/E-Commerce-Customer-Intelligence-Platform",
     live: "",
     images: [],
+    challenges: [
+      {
+        problem: "Fixed thresholds for RFM scoring assume you already know the distribution ahead of time. Set them wrong on a new dataset and Champions ends up either too broad to act on or too narrow to matter.",
+        fix: "Switched to quintile binning — splitting the dataset into five equal groups per RFM dimension and scoring by relative position, so the segmentation self-calibrates to whatever revenue scale the data has.",
+        result: "1,477 Champions averaging £8,011, buying every 20 days",
+      },
+      {
+        problem: "The cohort retention matrix was silently wrong. Simple month subtraction doesn't account for unequal month lengths, so a one-day gap could push a customer into the wrong cohort index — with no error to flag it.",
+        fix: "Replaced the month subtraction with day-based division — (OrderDate − CohortStart).days // 30 — so every customer lands in the correct cohort regardless of calendar quirks.",
+        result: "Accurate retention tracking across 25 cohorts",
+      },
+      {
+        problem: "The revenue forecast was built on the wrong assumption. STL decomposition showed the underlying trend was nearly flat — almost all the movement was seasonal swing, not growth.",
+        fix: "Switched Prophet from additive to multiplicative seasonality, since additive mode assumes a fixed swing regardless of trend level — the wrong choice for a business with ±60-70% seasonal variation.",
+        result: "Model correctly predicted the Christmas peak and January trough",
+      },
+      {
+        problem: "Market basket analysis on 5,242 products across 33,384 invoices needed 69.5GB of memory and failed instantly. Raising the support threshold to compensate just surfaced trivial, obvious combinations.",
+        fix: "Restricted the analysis to the top 200 products by purchase frequency before mining, instead of the full catalog.",
+        result: "268 rules generated · 11.7x average lift · 33.8x max lift",
+      },
+    ],
   },
   {
     id: "sales-data-warehouse",
