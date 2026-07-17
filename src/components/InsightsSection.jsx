@@ -21,8 +21,8 @@ const stats = [
   { value: '40M+', label: 'Records Analyzed', color: '#8B5CF6' },
   { value: '12+', label: 'ML Algorithms Deployed', color: '#10B981' },
   { value: '6', label: 'Statistical Methods Applied', color: '#F59E0B' },
-  { value: '8', label: 'Dashboards & Apps Built', color: '#06B6D4' },
-  { value: '2', label: 'Live Deployed Applications', color: '#EF4444' },
+  { value: '6', label: 'Dashboards & Apps Built', color: '#06B6D4' },
+  { value: '8', label: 'Live Deployed Applications', color: '#EF4444' },
 ]
 
 const cardStyle = {
